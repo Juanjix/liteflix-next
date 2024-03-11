@@ -1,2 +1,3 @@
 export * from "./Navbar"
 export * from "./MovieCard"
+export * from "./Hero"
