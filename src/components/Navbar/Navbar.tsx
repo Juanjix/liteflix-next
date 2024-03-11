@@ -1,7 +1,7 @@
 "use client";
 
 import { Logo } from "./Logo";
-import { Button, Avatar, HStack, Box, IconButton } from "@chakra-ui/react";
+import { Button, Avatar, HStack, IconButton } from "@chakra-ui/react";
 import { AddIcon, HamburgerIcon, BellIcon } from "@chakra-ui/icons";
 
 export const Navbar = () => {
@@ -20,7 +20,7 @@ export const Navbar = () => {
           icon={<HamburgerIcon />}
         />
         <IconButton
-          aria-label="Notification"
+          aria-label="Notifications"
           variant="ghost"
           icon={<BellIcon />}
         />
