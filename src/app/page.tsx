@@ -19,7 +19,7 @@ import {
 
 export default function Home() {
   return (
-    <Container maxW={"container.lg"}>
+    <Container maxW={"7xl"}>
       <Navbar />
       <Flex justify={"space-between"} alignItems={"flex-end"}>
         <Hero title={"La casa de papel"} isOriginal link="/" />

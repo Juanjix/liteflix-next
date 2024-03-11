@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { Logo } from "./Logo";
 import {
@@ -10,7 +10,6 @@ import {
   IconButton,
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
@@ -21,7 +20,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Input,
@@ -33,22 +31,56 @@ const ModalButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const inputStyles = {
+    padding: "40px",
+    border: "1px dashed white",
+    color: "white",
+  };
+
   return (
     <>
-      <Button variant="ghost" leftIcon={<AddIcon />} onClick={onOpen}>
+      <Button
+        variant="ghost"
+        leftIcon={<AddIcon />}
+        onClick={onOpen}
+        color={"white"}>
         Agregar peliculas
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Agregar Pelicula</ModalHeader>
+        <ModalContent bg={"darkgrey"} padding={"40px 40px"}>
+          <ModalHeader
+            textTransform={"uppercase"}
+            color={"brand"}
+            textAlign={"center"}>
+            Agregar Pelicula
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             {!isSuccess ? (
               <Stack>
-                <Input type="file" />
-                <Input placeholder="Titulo" type="text" />
+                <Input
+                  type="file"
+                  border={0}
+                  marginBottom={50}
+                  marginTop={50}
+                  textAlign={"center"}
+                  style={inputStyles}
+                  textDecorationLine={"underline"}
+                  placeholder="ESTE SERIA EL PLACEHOLDER"
+                  color={"white"}
+                />
+                <Input
+                  placeholder="TITULO"
+                  type="text"
+                  border={0}
+                  borderBottom={"1px solid white"}
+                  borderRadius={0}
+                  marginBottom={50}
+                  marginTop={50}
+                  textAlign={"center"}
+                />
                 <Button colorScheme="blue" mr={3}>
                   Subir Pelicula
                 </Button>
