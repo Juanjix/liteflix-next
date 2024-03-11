@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Logo } from "./Logo";
 import {
@@ -25,11 +25,14 @@ import {
   ModalBody,
   ModalCloseButton,
   Input,
+  Text,
 } from "@chakra-ui/react";
 import { AddIcon, HamburgerIcon, BellIcon } from "@chakra-ui/icons";
 
 const ModalButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isSuccess, setIsSuccess] = useState(false);
+
   return (
     <>
       <Button variant="ghost" leftIcon={<AddIcon />} onClick={onOpen}>
@@ -42,13 +45,21 @@ const ModalButton = () => {
           <ModalHeader>Agregar Pelicula</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Stack>
-              <Input placeholder="Titulo" type="file" />
-              <Input placeholder="Titulo" type="text" />
-              <Button colorScheme="blue" mr={3}>
-                Subir Pelicula
-              </Button>
-            </Stack>
+            {!isSuccess ? (
+              <Stack>
+                <Input type="file" />
+                <Input placeholder="Titulo" type="text" />
+                <Button colorScheme="blue" mr={3}>
+                  Subir Pelicula
+                </Button>
+              </Stack>
+            ) : (
+              <Stack>
+                <Text>Felicitaciones</Text>
+                <Text>Litebox the movie fue correctamente subida</Text>
+                <Button onClick={onClose}>Ir a Home</Button>
+              </Stack>
+            )}
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -59,6 +70,7 @@ const ModalButton = () => {
 const BurgerMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+
   return (
     <>
       <IconButton
