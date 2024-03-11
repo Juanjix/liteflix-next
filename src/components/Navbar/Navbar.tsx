@@ -69,7 +69,6 @@ const ModalButton = () => {
 
 const BurgerMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
 
   return (
     <>
@@ -77,14 +76,9 @@ const BurgerMenu = () => {
         aria-label="Menu"
         variant="ghost"
         icon={<HamburgerIcon />}
-        ref={btnRef}
         onClick={onOpen}
       />
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        finalFocusRef={btnRef}>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>

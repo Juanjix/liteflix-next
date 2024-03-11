@@ -31,7 +31,7 @@ export default function Home() {
               </MenuButton>
               <MenuList>
                 <MenuItem>Populares</MenuItem>
-                <MenuItem>Peliculas</MenuItem>
+                <MenuItem>Mis Peliculas</MenuItem>
               </MenuList>
             </Menu>
           </Box>
