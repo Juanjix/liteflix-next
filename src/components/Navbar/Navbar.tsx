@@ -17,8 +17,44 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Stack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Input,
 } from "@chakra-ui/react";
 import { AddIcon, HamburgerIcon, BellIcon } from "@chakra-ui/icons";
+
+const ModalButton = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      <Button variant="ghost" leftIcon={<AddIcon />} onClick={onOpen}>
+        Agregar peliculas
+      </Button>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Agregar Pelicula</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Stack>
+              <Input placeholder="Titulo" type="file" />
+              <Input placeholder="Titulo" type="text" />
+              <Button colorScheme="blue" mr={3}>
+                Subir Pelicula
+              </Button>
+            </Stack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
 
 const BurgerMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -65,9 +101,7 @@ const BurgerMenu = () => {
               <Button>Populares</Button>
               <Button>Mis peliculas</Button>
               <Button>Mi lista</Button>
-              <Button variant="ghost" leftIcon={<AddIcon />}>
-                Agregar peliculas
-              </Button>
+              <ModalButton />
               <Button>Cerrar sesion</Button>
             </Stack>
           </DrawerBody>
@@ -81,9 +115,7 @@ export const Navbar = () => {
     <HStack w={"full"}>
       <HStack spacing={12}>
         <Logo />
-        <Button variant="ghost" leftIcon={<AddIcon />}>
-          Agregar peliculas
-        </Button>
+        <ModalButton />
       </HStack>
       <HStack ml={"auto"}>
         <BurgerMenu />
