@@ -19,11 +19,14 @@ import {
 
 export default function Home() {
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={"1232px"} h={"full"}>
       <Navbar />
-      <Flex justify={"space-between"} alignItems={"flex-end"}>
+      <Stack
+        flexDir={["column", "row"]}
+        justify={"space-between"}
+        alignItems={["center", "flex-end"]}>
         <Hero title={"La casa de papel"} isOriginal link="/" />
-        <Stack w={220}>
+        <Stack maxW={"200px"}>
           <Box>
             <Menu>
               <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
@@ -54,7 +57,7 @@ export default function Home() {
             imageUrl="/images/image.png"
           />
         </Stack>
-      </Flex>
+      </Stack>
     </Container>
   );
 }

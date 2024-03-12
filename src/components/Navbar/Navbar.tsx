@@ -24,8 +24,11 @@ import {
   ModalCloseButton,
   Input,
   Text,
+  Show,
+  Hide,
 } from "@chakra-ui/react";
-import { AddIcon, HamburgerIcon, BellIcon } from "@chakra-ui/icons";
+import { AddIcon } from "@chakra-ui/icons";
+import { IconBell, IconMenu } from "@/components";
 
 const ModalButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,11 +42,7 @@ const ModalButton = () => {
 
   return (
     <>
-      <Button
-        variant="ghost"
-        leftIcon={<AddIcon />}
-        onClick={onOpen}
-        color={"white"}>
+      <Button variant="ghost" leftIcon={<AddIcon />} onClick={onOpen}>
         Agregar peliculas
       </Button>
 
@@ -107,7 +106,7 @@ const BurgerMenu = () => {
       <IconButton
         aria-label="Menu"
         variant="ghost"
-        icon={<HamburgerIcon />}
+        icon={<IconMenu />}
         onClick={onOpen}
       />
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -124,7 +123,7 @@ const BurgerMenu = () => {
                 <IconButton
                   aria-label="Notifications"
                   variant="ghost"
-                  icon={<BellIcon />}
+                  icon={<IconBell />}
                 />
                 <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
               </HStack>
@@ -148,22 +147,39 @@ const BurgerMenu = () => {
     </>
   );
 };
+
 export const Navbar = () => {
   return (
-    <HStack w={"full"}>
-      <HStack spacing={12}>
-        <Logo />
-        <ModalButton />
-      </HStack>
-      <HStack ml={"auto"}>
-        <BurgerMenu />
-        <IconButton
-          aria-label="Notifications"
-          variant="ghost"
-          icon={<BellIcon />}
-        />
-        <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-      </HStack>
-    </HStack>
+    <>
+      <Show below="sm">
+        <HStack
+          justify={"space-evenly"}
+          w={"full"}
+          paddingBottom={"50px"}
+          paddingTop={"25px"}>
+          <BurgerMenu />
+          <Logo />
+          <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
+        </HStack>
+      </Show>
+
+      <Show above="sm">
+        <HStack w={"full"} paddingBottom={"50px"} paddingTop={"25px"}>
+          <HStack spacing={12}>
+            <Logo />
+            <ModalButton />
+          </HStack>
+          <HStack ml={"auto"}>
+            <BurgerMenu />
+            <IconButton
+              aria-label="Notifications"
+              variant="ghost"
+              icon={<IconBell />}
+            />
+            <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
+          </HStack>
+        </HStack>
+      </Show>
+    </>
   );
 };

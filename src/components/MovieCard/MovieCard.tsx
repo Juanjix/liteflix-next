@@ -33,7 +33,11 @@ export const MovieCard = (props: MovieCardProps) => {
               colorScheme="blackAlpha"
             />
           </Box>
-          <Text color={"white"} textTransform={"uppercase"}>
+          <Text
+            color={"white"}
+            textTransform={"uppercase"}
+            lineHeight={"16px"}
+            letterSpacing={"4px"}>
             {title}
           </Text>
         </Stack>

@@ -10,23 +10,28 @@ interface HeroProps {
 export const Hero = (props: HeroProps) => {
   const { title, isOriginal, link } = props;
   const ButtonStyle = {
-    width: 246,
+    maxWidth: 246,
     padding: "28px 56px",
     letterSpacing: 4,
   };
   return (
-    <Stack spacing={5}>
+    <Stack spacing={5} w={"full"} paddingBottom={[20, 10]}>
       <Stack>
         {isOriginal && (
-          <Text>
-            Original de <span>Liteflix</span>
+          <Text
+            fontSize={"20px"}
+            color={"white"}
+            letterSpacing={"4px"}
+            lineHeight={"24px"}
+            fontWeight={"light"}>
+            Original de <Text as={"b"}>Liteflix</Text>
           </Text>
         )}
         <Heading
           textTransform={"uppercase"}
           color={"brand"}
-          fontSize={"9xl"}
-          letterSpacing={9}>
+          letterSpacing={9}
+          fontSize={{ base: "76px", lg: "120px" }}>
           {title}
         </Heading>
       </Stack>
@@ -37,11 +42,10 @@ export const Hero = (props: HeroProps) => {
           as={"a"}
           href={link}
           style={ButtonStyle}
-          background={"darkgrey"}
-          color={"white"}>
+          variant={"primary"}>
           Reproducir
         </Button>
-        <Button leftIcon={<Plus />} variant={"outline"} style={ButtonStyle}>
+        <Button leftIcon={<Plus />} variant={"secondary"} style={ButtonStyle}>
           Mi lista
         </Button>
       </HStack>
