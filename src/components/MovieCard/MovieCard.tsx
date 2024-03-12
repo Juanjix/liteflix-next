@@ -20,7 +20,7 @@ export const MovieCard = (props: MovieCardProps) => {
         width={220}
         height={146}>
         <Stack justifyContent={"center"} alignItems={"center"} h={"full"}>
-          <Box>
+          <Box boxShadow="md">
             <IconButton
               aria-label="Notifications"
               icon={<Play />}

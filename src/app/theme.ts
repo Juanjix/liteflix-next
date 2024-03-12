@@ -65,6 +65,10 @@ export const theme = extendTheme({
       dialogContainer: {
         baseStyle: {
           textTransfom: "uppercase",
+          px: "200px",
+        },
+        body: {
+          py: "200px",
         },
       },
     },

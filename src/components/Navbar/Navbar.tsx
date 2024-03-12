@@ -120,7 +120,7 @@ const BurgerMenu = () => {
         size={["full", "lg"]}>
         <DrawerOverlay />
         <DrawerContent backgroundColor={"darkgrey"}>
-          <DrawerHeader>
+          <DrawerHeader px={["30px", "60px"]} py={["30px", "30px"]}>
             <HStack justify={"space-between"}>
               <DrawerCloseButton
                 top={"auto"}
@@ -129,7 +129,7 @@ const BurgerMenu = () => {
                 color={"white"}
                 width={"auto"}
               />
-              <HStack>
+              <HStack spacing={9}>
                 <IconButton
                   aria-label="Notifications"
                   variant="ghost"
@@ -139,7 +139,7 @@ const BurgerMenu = () => {
               </HStack>
             </HStack>
           </DrawerHeader>
-          <DrawerBody>
+          <DrawerBody px={["30px", "60px"]}>
             <Stack spacing={8}>
               <Button variant={"link"}>Inicio</Button>
               <Button variant={"link"}>Series</Button>
@@ -176,7 +176,7 @@ export const Navbar = () => {
       </Show>
 
       <Hide below="md">
-        <HStack w={"full"} paddingBottom={"50px"} paddingTop={"25px"}>
+        <HStack w={"full"} paddingBottom={"30px"} paddingTop={"20px"}>
           <HStack spacing={12}>
             <Logo />
             <ModalButton />
