@@ -25,6 +25,7 @@ import {
   Input,
   Text,
   Show,
+  Hide,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { IconBell, IconMenu } from "@/components";
@@ -41,7 +42,11 @@ const ModalButton = () => {
 
   return (
     <>
-      <Button variant="ghost" leftIcon={<AddIcon />} onClick={onOpen}>
+      <Button
+        padding={"0"}
+        variant="ghost"
+        leftIcon={<AddIcon />}
+        onClick={onOpen}>
         Agregar peliculas
       </Button>
 
@@ -130,7 +135,7 @@ const BurgerMenu = () => {
                   variant="ghost"
                   icon={<IconBell />}
                 />
-                <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+                <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
               </HStack>
             </HStack>
           </DrawerHeader>
@@ -143,7 +148,9 @@ const BurgerMenu = () => {
               <Button variant={"link"}>Populares</Button>
               <Button variant={"link"}>Mis peliculas</Button>
               <Button variant={"link"}>Mi lista</Button>
-              <ModalButton />
+              <div>
+                <ModalButton />
+              </div>
               <Button variant={"link"}>Cerrar sesion</Button>
             </Stack>
           </DrawerBody>
@@ -168,7 +175,7 @@ export const Navbar = () => {
         </HStack>
       </Show>
 
-      <Show above="sm">
+      <Hide below="md">
         <HStack w={"full"} paddingBottom={"50px"} paddingTop={"25px"}>
           <HStack spacing={12}>
             <Logo />
@@ -184,7 +191,7 @@ export const Navbar = () => {
             <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
           </HStack>
         </HStack>
-      </Show>
+      </Hide>
     </>
   );
 };

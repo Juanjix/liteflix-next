@@ -19,11 +19,7 @@ export const MovieCard = (props: MovieCardProps) => {
         backgroundSize={"cover"}
         width={220}
         height={146}>
-        <Stack
-          justify={"center"}
-          align={"center"}
-          alignItems={"center"}
-          h={"full"}>
+        <Stack justifyContent={"center"} alignItems={"center"} h={"full"}>
           <Box>
             <IconButton
               aria-label="Notifications"
@@ -31,6 +27,7 @@ export const MovieCard = (props: MovieCardProps) => {
               rounded={"full"}
               border={"2px"}
               colorScheme="blackAlpha"
+              justifyContent={"center"}
             />
           </Box>
           <Text
@@ -38,7 +35,8 @@ export const MovieCard = (props: MovieCardProps) => {
             textTransform={"uppercase"}
             lineHeight={"16px"}
             letterSpacing={"4px"}
-            marginTop={"12px"}>
+            textAlign={"center"}
+            fontWeight={400}>
             {title}
           </Text>
         </Stack>
