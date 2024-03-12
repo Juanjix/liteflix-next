@@ -5,7 +5,7 @@ interface MovieCardProps {
   imageUrl: string;
   title: string;
   ranking: number;
-  year: number;
+  year: string;
 }
 
 export const MovieCard = (props: MovieCardProps) => {
@@ -37,7 +37,8 @@ export const MovieCard = (props: MovieCardProps) => {
             color={"white"}
             textTransform={"uppercase"}
             lineHeight={"16px"}
-            letterSpacing={"4px"}>
+            letterSpacing={"4px"}
+            marginTop={"12px"}>
             {title}
           </Text>
         </Stack>

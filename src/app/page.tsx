@@ -1,6 +1,5 @@
-"use client";
 import { Navbar, MovieCard, Hero } from "@/components";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+// import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Container,
   Stack,
@@ -8,16 +7,48 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
   Button,
   Box,
-  Flex,
 } from "@chakra-ui/react";
 
-export default function Home() {
+interface MovieProps {
+  title: string;
+  poster_path: string;
+  release_date: string;
+}
+
+async function getMovies() {
+  const res = await fetch(
+    "https://api.themoviedb.org/3/movie/popular?api_key=6f26fd536dd6192ec8a57e94141f8b20"
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
+async function getNowPlaying() {
+  const res = await fetch(
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=6f26fd536dd6192ec8a57e94141f8b20"
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
+export default async function Home() {
+  const movies = await getMovies();
+  const nowPlaying = await getNowPlaying();
+
   return (
     <Container maxW={"1232px"} h={"full"}>
       <Navbar />
@@ -25,11 +56,13 @@ export default function Home() {
         flexDir={["column", "row"]}
         justify={"space-between"}
         alignItems={["center", "flex-end"]}>
-        <Hero title={"La casa de papel"} isOriginal link="/" />
-        <Stack maxW={"200px"}>
+        {nowPlaying.results.slice(0, 1).map(({ title }: MovieProps) => {
+          return <Hero title={title} isOriginal link="/" key={title} />;
+        })}
+        <Stack maxW={"200px"} spacing={4}>
           <Box>
             <Menu>
-              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+              <MenuButton as={Button} variant={"ghost"}>
                 Ver:
               </MenuButton>
               <MenuList>
@@ -38,24 +71,19 @@ export default function Home() {
               </MenuList>
             </Menu>
           </Box>
-          <MovieCard
-            year={2003}
-            title="La casa de papel"
-            ranking={2}
-            imageUrl="/images/image.png"
-          />
-          <MovieCard
-            year={2003}
-            title="La casa de papel"
-            ranking={2}
-            imageUrl="/images/image.png"
-          />
-          <MovieCard
-            year={2003}
-            title="La casa de papel"
-            ranking={2}
-            imageUrl="/images/image.png"
-          />
+          {movies.results
+            .slice(0, 4)
+            .map(({ title, poster_path, release_date }: MovieProps) => {
+              return (
+                <MovieCard
+                  year={release_date}
+                  title={title}
+                  ranking={2}
+                  imageUrl={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                  key={title}
+                />
+              );
+            })}
         </Stack>
       </Stack>
     </Container>

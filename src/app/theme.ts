@@ -1,17 +1,17 @@
-import { extendTheme } from '@chakra-ui/react'
-import "@fontsource/bebas-neue"
+import { extendTheme } from "@chakra-ui/react";
+import "@fontsource/bebas-neue";
 
 export const theme = extendTheme({
-  styles:{
-    global:{
+  styles: {
+    global: {
       "html,body,#__next": {
         height: "100%",
         minHeight: "100%",
-        background: "black"
-      }
-    }
+        background: "black",
+      },
+    },
   },
-  fonts:{
+  fonts: {
     heading: `'Bebas Neue', sans-serif`,
     body: `'Bebas Neue', sans-serif`,
   },
@@ -19,7 +19,7 @@ export const theme = extendTheme({
     brand: "#64EEBC",
     darkgrey: "#242424",
   },
-  components:{
+  components: {
     Button: {
       baseStyle: {
         textTransform: "uppercase",
@@ -27,39 +27,46 @@ export const theme = extendTheme({
         letterSpacing: "4px",
         fontSize: "18px",
       },
-      variants:{
+      variants: {
         primary: {
           borderRadius: "0",
           padding: "28px 56px",
           backgroundColor: "darkgrey",
           border: "1px solid #242424",
-          _hover:{
-            border: "1px solid white"
-          }
+          _hover: {
+            border: "1px solid white",
+          },
         },
-        secondary:{
+        secondary: {
           padding: "28px 56px",
           backgroundColor: "transparent",
           border: "1px solid white",
           borderRadius: "0",
-          _hover:{
+          _hover: {
             border: "1px solid darkgrey",
-          }
+          },
         },
-        ghost:{
+        ghost: {
           color: "white",
           _hover: {
-            backgroundColor: "rgba(0,0,0,0.5)"
-          }
-        }
-      }
+            backgroundColor: "rgba(0,0,0,0.5)",
+          },
+        },
+        link: {
+          textAlign: "left",
+          color: "white",
+          alignItems: "left",
+          justifyContent: "left",
+          fontWeight: 100,
+        },
+      },
     },
-    Modal:{
-      dialogContainer:{
+    Modal: {
+      dialogContainer: {
         baseStyle: {
-          textTransfom: "uppercase"
-        }
-      }
-    }
-  }
-})
+          textTransfom: "uppercase",
+        },
+      },
+    },
+  },
+});

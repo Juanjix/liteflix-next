@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
 import { Logo } from "./Logo";
+
 import {
   Button,
   Avatar,
@@ -25,7 +25,6 @@ import {
   Input,
   Text,
   Show,
-  Hide,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { IconBell, IconMenu } from "@/components";
@@ -109,15 +108,21 @@ const BurgerMenu = () => {
         icon={<IconMenu />}
         onClick={onOpen}
       />
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        size={["full", "lg"]}>
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent backgroundColor={"darkgrey"}>
           <DrawerHeader>
             <HStack justify={"space-between"}>
               <DrawerCloseButton
                 top={"auto"}
                 right={"auto"}
                 position={"relative"}
+                color={"white"}
+                width={"auto"}
               />
               <HStack>
                 <IconButton
@@ -130,16 +135,16 @@ const BurgerMenu = () => {
             </HStack>
           </DrawerHeader>
           <DrawerBody>
-            <Stack>
-              <Button>Inicio</Button>
-              <Button>Series</Button>
-              <Button>Peliculas</Button>
-              <Button>Agregadas recientemente</Button>
-              <Button>Populares</Button>
-              <Button>Mis peliculas</Button>
-              <Button>Mi lista</Button>
+            <Stack spacing={8}>
+              <Button variant={"link"}>Inicio</Button>
+              <Button variant={"link"}>Series</Button>
+              <Button variant={"link"}>Peliculas</Button>
+              <Button variant={"link"}>Agregadas recientemente</Button>
+              <Button variant={"link"}>Populares</Button>
+              <Button variant={"link"}>Mis peliculas</Button>
+              <Button variant={"link"}>Mi lista</Button>
               <ModalButton />
-              <Button>Cerrar sesion</Button>
+              <Button variant={"link"}>Cerrar sesion</Button>
             </Stack>
           </DrawerBody>
         </DrawerContent>
@@ -169,7 +174,7 @@ export const Navbar = () => {
             <Logo />
             <ModalButton />
           </HStack>
-          <HStack ml={"auto"}>
+          <HStack ml={"auto"} spacing={8}>
             <BurgerMenu />
             <IconButton
               aria-label="Notifications"
