@@ -1,5 +1,5 @@
 import { Navbar, MovieCard, Hero } from "@/components";
-// import { ChevronDownIcon } from "@chakra-ui/icons";
+
 import {
   Container,
   Stack,
@@ -50,42 +50,49 @@ export default async function Home() {
   const nowPlaying = await getNowPlaying();
 
   return (
-    <Container maxW={"1232px"} h={"full"}>
-      <Navbar />
-      <Stack
-        flexDir={["column", "row"]}
-        justify={"space-between"}
-        alignItems={["center", "flex-end"]}>
-        {nowPlaying.results.slice(0, 1).map(({ title }: MovieProps) => {
-          return <Hero title={title} isOriginal link="/" key={title} />;
-        })}
-        <Stack maxW={"200px"} spacing={4}>
-          <Box>
-            <Menu>
-              <MenuButton as={Button} variant={"ghost"}>
-                Ver:
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Populares</MenuItem>
-                <MenuItem>Mis Peliculas</MenuItem>
-              </MenuList>
-            </Menu>
-          </Box>
-          {movies.results
-            .slice(0, 4)
-            .map(({ title, poster_path, release_date }: MovieProps) => {
-              return (
-                <MovieCard
-                  year={release_date}
-                  title={title}
-                  ranking={2}
-                  imageUrl={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                  key={title}
-                />
-              );
-            })}
+    <Box
+      w={"full"}
+      minH={"full"}
+      backgroundImage={`https://image.tmdb.org/t/p/original/${nowPlaying.results[0].poster_path}`}
+      backgroundRepeat={"no-repeat"}
+      backgroundSize={"cover"}>
+      <Container maxW={"1232px"} py={"20px"}>
+        <Navbar />
+        <Stack
+          flexDir={["column", "row"]}
+          justify={"space-between"}
+          alignItems={["center", "flex-end"]}>
+          {nowPlaying.results.slice(0, 1).map(({ title }: MovieProps) => {
+            return <Hero title={title} isOriginal link="/" key={title} />;
+          })}
+          <Stack maxW={"200px"} spacing={4}>
+            <Box>
+              <Menu>
+                <MenuButton as={Button} variant={"ghost"}>
+                  Ver:
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Populares</MenuItem>
+                  <MenuItem>Mis Peliculas</MenuItem>
+                </MenuList>
+              </Menu>
+            </Box>
+            {movies.results
+              .slice(0, 4)
+              .map(({ title, poster_path, release_date }: MovieProps) => {
+                return (
+                  <MovieCard
+                    year={release_date}
+                    title={title}
+                    ranking={2}
+                    imageUrl={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    key={title}
+                  />
+                );
+              })}
+          </Stack>
         </Stack>
-      </Stack>
-    </Container>
+      </Container>
+    </Box>
   );
 }

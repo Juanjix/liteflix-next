@@ -50,7 +50,7 @@ const ModalButton = () => {
         Agregar peliculas
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"3xl"}>
         <ModalOverlay />
         <ModalContent bg={"darkgrey"} padding={"40px 40px"}>
           <ModalHeader
@@ -72,7 +72,6 @@ const ModalButton = () => {
                   style={inputStyles}
                   textDecorationLine={"underline"}
                   placeholder="ESTE SERIA EL PLACEHOLDER"
-                  color={"white"}
                 />
                 <Input
                   placeholder="TITULO"
@@ -84,7 +83,7 @@ const ModalButton = () => {
                   marginTop={50}
                   textAlign={"center"}
                 />
-                <Button colorScheme="blue" mr={3}>
+                <Button mr={3} isDisabled>
                   Subir Pelicula
                 </Button>
               </Stack>

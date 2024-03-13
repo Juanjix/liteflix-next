@@ -49,7 +49,7 @@ export const theme = extendTheme({
         ghost: {
           color: "white",
           _hover: {
-            backgroundColor: "rgba(0,0,0,0.5)",
+            backgroundColor: `rgba(0,0,0,0.5)`,
           },
         },
         link: {
@@ -59,16 +59,17 @@ export const theme = extendTheme({
           justifyContent: "left",
           fontWeight: 100,
         },
+        _isDisabled: {
+          backgroundColor: "rgba(255, 255, 255, 1)",
+          color: "white",
+          border: 0,
+        },
       },
     },
     Modal: {
       dialogContainer: {
         baseStyle: {
           textTransfom: "uppercase",
-          px: "200px",
-        },
-        body: {
-          py: "200px",
         },
       },
     },
