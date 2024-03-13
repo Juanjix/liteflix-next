@@ -38,6 +38,9 @@ const ModalButton = () => {
     padding: "40px",
     border: "1px dashed white",
     color: "white",
+    _placeholder: {
+      textAlign: "center",
+    },
   };
 
   return (
@@ -56,13 +59,15 @@ const ModalButton = () => {
           <ModalHeader
             textTransform={"uppercase"}
             color={"brand"}
-            textAlign={"center"}>
+            textAlign={"center"}
+            letterSpacing={"4px"}
+            fontSize={"25px"}>
             Agregar Pelicula
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             {!isSuccess ? (
-              <Stack>
+              <Stack alignItems={"center"}>
                 <Input
                   type="file"
                   border={0}
@@ -70,11 +75,14 @@ const ModalButton = () => {
                   marginTop={50}
                   textAlign={"center"}
                   style={inputStyles}
-                  textDecorationLine={"underline"}
-                  placeholder="ESTE SERIA EL PLACEHOLDER"
                 />
                 <Input
                   placeholder="TITULO"
+                  _placeholder={{
+                    color: "white",
+                    fontSize: "16px",
+                    letterSpacing: "4px",
+                  }}
                   type="text"
                   border={0}
                   borderBottom={"1px solid white"}
@@ -82,10 +90,15 @@ const ModalButton = () => {
                   marginBottom={50}
                   marginTop={50}
                   textAlign={"center"}
+                  maxW={"248"}
+                  color={"white"}
+                  letterSpacing={"4px"}
                 />
-                <Button mr={3} isDisabled>
-                  Subir Pelicula
-                </Button>
+                <div>
+                  <Button isDisabled variant={"sendData"}>
+                    Subir Pelicula
+                  </Button>
+                </div>
               </Stack>
             ) : (
               <Stack>

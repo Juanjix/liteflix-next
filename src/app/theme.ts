@@ -59,10 +59,11 @@ export const theme = extendTheme({
           justifyContent: "left",
           fontWeight: 100,
         },
-        _isDisabled: {
-          backgroundColor: "rgba(255, 255, 255, 1)",
-          color: "white",
-          border: 0,
+        sendData: {
+          width: "246px",
+          padding: "28px 56px",
+          border: "1px solid",
+          borderRadius: 0,
         },
       },
     },
