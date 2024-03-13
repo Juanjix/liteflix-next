@@ -19,8 +19,14 @@ export const MovieCard = (props: MovieCardProps) => {
         backgroundSize={"cover"}
         width={220}
         height={146}>
-        <Stack justifyContent={"center"} alignItems={"center"} h={"full"}>
-          <Box boxShadow="md">
+        <Stack
+          justifyContent={"space-evenly"}
+          alignItems={"center"}
+          h={"full"}
+          background={
+            "linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%)"
+          }>
+          <Box mt={"30px"}>
             <IconButton
               aria-label="Notifications"
               icon={<Play />}
