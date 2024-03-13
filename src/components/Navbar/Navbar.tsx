@@ -29,6 +29,7 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { IconBell, IconMenu } from "@/components";
+import { createMovie } from "@/app/actions";
 
 const ModalButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -67,39 +68,43 @@ const ModalButton = () => {
           <ModalCloseButton />
           <ModalBody>
             {!isSuccess ? (
-              <Stack alignItems={"center"}>
-                <Input
-                  type="file"
-                  border={0}
-                  marginBottom={50}
-                  marginTop={50}
-                  textAlign={"center"}
-                  style={inputStyles}
-                />
-                <Input
-                  placeholder="TITULO"
-                  _placeholder={{
-                    color: "white",
-                    fontSize: "16px",
-                    letterSpacing: "4px",
-                  }}
-                  type="text"
-                  border={0}
-                  borderBottom={"1px solid white"}
-                  borderRadius={0}
-                  marginBottom={50}
-                  marginTop={50}
-                  textAlign={"center"}
-                  maxW={"248"}
-                  color={"white"}
-                  letterSpacing={"4px"}
-                />
-                <div>
-                  <Button isDisabled variant={"sendData"}>
-                    Subir Pelicula
-                  </Button>
-                </div>
-              </Stack>
+              <form action={createMovie}>
+                <Stack alignItems={"center"}>
+                  <Input
+                    type="file"
+                    border={0}
+                    marginBottom={50}
+                    marginTop={50}
+                    textAlign={"center"}
+                    style={inputStyles}
+                    name="image"
+                  />
+                  <Input
+                    placeholder="TITULO"
+                    _placeholder={{
+                      color: "white",
+                      fontSize: "16px",
+                      letterSpacing: "4px",
+                    }}
+                    type="text"
+                    name="title"
+                    border={0}
+                    borderBottom={"1px solid white"}
+                    borderRadius={0}
+                    marginBottom={50}
+                    marginTop={50}
+                    textAlign={"center"}
+                    maxW={"248"}
+                    color={"white"}
+                    letterSpacing={"4px"}
+                  />
+                  <div>
+                    <Button type="submit" variant={"sendData"}>
+                      Subir Pelicula
+                    </Button>
+                  </div>
+                </Stack>
+              </form>
             ) : (
               <Stack>
                 <Text>Felicitaciones</Text>

@@ -1,4 +1,7 @@
-import { Navbar, MovieCard, Hero } from "@/components";
+import { Navbar, MovieCard, Hero, SideBar } from "@/components";
+
+import { db } from "@/db";
+import { MoviesTable } from "@/db/schema";
 
 import {
   Container,
@@ -10,6 +13,7 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
+import { desc } from "drizzle-orm";
 
 interface MovieProps {
   title: string;
@@ -37,23 +41,37 @@ async function getNowPlaying() {
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
-
+  const data = await res.json();
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
-  return res.json();
+  return data.results[0];
+}
+
+async function getFavorites() {
+  try {
+    const data = await db
+      .select()
+      .from(MoviesTable)
+      .orderBy(desc(MoviesTable.createdAt))
+      .limit(4);
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 export default async function Home() {
   const movies = await getMovies();
   const nowPlaying = await getNowPlaying();
+  const favorites = await getFavorites();
 
   return (
     <Box
       w={"full"}
       minH={"full"}
-      backgroundImage={`https://image.tmdb.org/t/p/original/${nowPlaying.results[0].poster_path}`}
+      backgroundImage={`https://image.tmdb.org/t/p/original/${nowPlaying.poster_path}`}
       backgroundRepeat={"no-repeat"}
       backgroundSize={"cover"}>
       <Container maxW={"1232px"} py={"20px"}>
@@ -62,35 +80,14 @@ export default async function Home() {
           flexDir={["column", "row"]}
           justify={"space-between"}
           alignItems={["center", "flex-end"]}>
-          {nowPlaying.results.slice(0, 1).map(({ title }: MovieProps) => {
-            return <Hero title={title} isOriginal link="/" key={title} />;
-          })}
-          <Stack maxW={"200px"} spacing={4}>
-            <Box>
-              <Menu>
-                <MenuButton as={Button} variant={"ghost"}>
-                  Ver:
-                </MenuButton>
-                <MenuList>
-                  <MenuItem>Populares</MenuItem>
-                  <MenuItem>Mis Peliculas</MenuItem>
-                </MenuList>
-              </Menu>
-            </Box>
-            {movies.results
-              .slice(0, 4)
-              .map(({ title, poster_path, release_date }: MovieProps) => {
-                return (
-                  <MovieCard
-                    year={release_date}
-                    title={title}
-                    ranking={2}
-                    imageUrl={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                    key={title}
-                  />
-                );
-              })}
-          </Stack>
+          <Hero
+            title={nowPlaying.title}
+            isOriginal
+            link="/"
+            key={nowPlaying.title}
+          />
+          ;
+          <SideBar populares={movies} favorites={favorites} />
         </Stack>
       </Container>
     </Box>

@@ -4,8 +4,8 @@ import { Play } from "lucide-react";
 interface MovieCardProps {
   imageUrl: string;
   title: string;
-  ranking: number;
-  year: string;
+  ranking?: number;
+  year?: string;
 }
 
 export const MovieCard = (props: MovieCardProps) => {
