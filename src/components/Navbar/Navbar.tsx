@@ -56,7 +56,7 @@ const ModalButton = () => {
 
       <Modal isOpen={isOpen} onClose={onClose} size={"3xl"}>
         <ModalOverlay />
-        <ModalContent bg={"darkgrey"} padding={"40px 40px"}>
+        <ModalContent bg={"darkgrey"} padding={"40px 40px"} color={"white"}>
           <ModalHeader
             textTransform={"uppercase"}
             color={"brand"}

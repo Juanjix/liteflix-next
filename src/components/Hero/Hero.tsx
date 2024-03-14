@@ -15,7 +15,7 @@ export const Hero = (props: HeroProps) => {
     letterSpacing: 4,
   };
   return (
-    <Stack spacing={5} w={"full"} paddingBottom={[20, 10]}>
+    <Stack spacing={5} w={"full"} paddingBottom={[20, 50]}>
       <Stack>
         {isOriginal && (
           <Text
@@ -39,7 +39,7 @@ export const Hero = (props: HeroProps) => {
       </Stack>
 
       <Stack
-        direction={["column", "row"]}
+        direction={["column", "column", "row"]}
         justifyContent={["center", "left"]}
         alignItems={["center", "left"]}>
         <Button

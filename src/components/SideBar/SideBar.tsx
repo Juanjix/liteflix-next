@@ -7,10 +7,12 @@ import {
   MenuItem,
   MenuList,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
 import { MovieCard } from "@/components";
+import { ChevronDown } from "lucide-react";
 
 interface MovieProps {
   title: string;
@@ -36,11 +38,22 @@ export const SideBar = (props: SideBarProps) => {
   const { populares, favorites } = props;
 
   return (
-    <Stack maxW={"200px"} spacing={4}>
+    <Stack maxW={"300px"} spacing={4}>
       <Box>
         <Menu>
-          <MenuButton as={Button} variant={"ghost"}>
-            Ver: {showMovie}
+          <MenuButton
+            as={Button}
+            variant={"ghost"}
+            fontWeight={400}
+            margin={"0 auto"}
+            display={"flex"}>
+            Ver:{" "}
+            <Text
+              display={"inline-flex"}
+              alignItems={"center"}
+              fontWeight={"700"}>
+              {showMovie} <ChevronDown />
+            </Text>
           </MenuButton>
           <MenuList>
             <MenuItem onClick={() => setShowMovie("Populares")}>

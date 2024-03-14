@@ -5,8 +5,6 @@ import { MoviesTable } from "@/db/schema";
 
 import { Container, Stack, Box } from "@chakra-ui/react";
 import { desc } from "drizzle-orm";
-import { Suspense } from "react";
-import { SideBarSkeleton } from "@/app/ui/skeletons";
 
 async function getMovies() {
   const res = await fetch(
@@ -43,8 +41,6 @@ async function getFavorites() {
       .from(MoviesTable)
       .orderBy(desc(MoviesTable.createdAt))
       .limit(4);
-    console.log("Fetching revenue data...");
-    await new Promise((resolve) => setTimeout(resolve, 3000));
     return data;
   } catch (e) {
     console.error(e);
@@ -66,15 +62,15 @@ export default async function Home() {
       <Container
         maxW={"100vw"}
         py={"20px"}
-        px={["16px", "50px"]}
+        px={["16px", "60px"]}
         background={
           "linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%)"
         }>
         <Navbar />
         <Stack
-          flexDir={["column", "row"]}
+          flexDir={["column", "column", "row"]}
           justify={"space-between"}
-          alignItems={["center", "flex-end"]}>
+          alignItems={["center", "center", "flex-end"]}>
           <Hero
             title={nowPlaying.title}
             isOriginal
@@ -82,9 +78,7 @@ export default async function Home() {
             key={nowPlaying.title}
           />
           ;
-          <Suspense fallback={<SideBarSkeleton />}>
-            <SideBar populares={movies} favorites={favorites} />
-          </Suspense>
+          <SideBar populares={movies} favorites={favorites} />
         </Stack>
       </Container>
     </Box>
