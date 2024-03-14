@@ -1,25 +1,12 @@
-import { Navbar, MovieCard, Hero, SideBar } from "@/components";
+import { Navbar, Hero, SideBar } from "@/components";
 
 import { db } from "@/db";
 import { MoviesTable } from "@/db/schema";
 
-import {
-  Container,
-  Stack,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Button,
-  Box,
-} from "@chakra-ui/react";
+import { Container, Stack, Box } from "@chakra-ui/react";
 import { desc } from "drizzle-orm";
-
-interface MovieProps {
-  title: string;
-  poster_path: string;
-  release_date: string;
-}
+import { Suspense } from "react";
+import { SideBarSkeleton } from "@/app/ui/skeletons";
 
 async function getMovies() {
   const res = await fetch(
@@ -56,6 +43,8 @@ async function getFavorites() {
       .from(MoviesTable)
       .orderBy(desc(MoviesTable.createdAt))
       .limit(4);
+    console.log("Fetching revenue data...");
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     return data;
   } catch (e) {
     console.error(e);
@@ -74,7 +63,13 @@ export default async function Home() {
       backgroundImage={`https://image.tmdb.org/t/p/original/${nowPlaying.poster_path}`}
       backgroundRepeat={"no-repeat"}
       backgroundSize={"cover"}>
-      <Container maxW={"1232px"} py={"20px"}>
+      <Container
+        maxW={"100vw"}
+        py={"20px"}
+        px={"50px"}
+        background={
+          "linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%)"
+        }>
         <Navbar />
         <Stack
           flexDir={["column", "row"]}
@@ -87,7 +82,9 @@ export default async function Home() {
             key={nowPlaying.title}
           />
           ;
-          <SideBar populares={movies} favorites={favorites} />
+          <Suspense fallback={<SideBarSkeleton />}>
+            <SideBar populares={movies} favorites={favorites} />
+          </Suspense>
         </Stack>
       </Container>
     </Box>
