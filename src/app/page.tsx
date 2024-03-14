@@ -66,7 +66,7 @@ export default async function Home() {
       <Container
         maxW={"100vw"}
         py={"20px"}
-        px={"50px"}
+        px={["16px", "50px"]}
         background={
           "linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%)"
         }>

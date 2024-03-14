@@ -23,20 +23,25 @@ export const Hero = (props: HeroProps) => {
             color={"white"}
             letterSpacing={"4px"}
             lineHeight={"24px"}
-            fontWeight={"light"}>
+            fontWeight={"light"}
+            textAlign={["center", "left"]}>
             Original de <Text as={"b"}>Liteflix</Text>
           </Text>
         )}
         <Heading
           textTransform={"uppercase"}
           color={"brand"}
+          textAlign={["center", "left"]}
           letterSpacing={9}
           fontSize={{ base: "76px", lg: "120px" }}>
           {title}
         </Heading>
       </Stack>
 
-      <HStack>
+      <Stack
+        direction={["column", "row"]}
+        justifyContent={["center", "left"]}
+        alignItems={["center", "left"]}>
         <Button
           leftIcon={<Play />}
           as={"a"}
@@ -48,7 +53,7 @@ export const Hero = (props: HeroProps) => {
         <Button leftIcon={<Plus />} variant={"secondary"} style={ButtonStyle}>
           Mi lista
         </Button>
-      </HStack>
+      </Stack>
     </Stack>
   );
 };
