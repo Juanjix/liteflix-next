@@ -26,6 +26,8 @@ export const theme = extendTheme({
         color: "white",
         letterSpacing: "4px",
         fontSize: "18px",
+        // maxWidth: "248px",
+        // width: "100%",
       },
       variants: {
         primary: {

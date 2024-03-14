@@ -1,19 +1,10 @@
-import { Text, Heading, Button, HStack, Stack } from "@chakra-ui/react";
+import { HeroProps } from "@/types";
+import { Text, Heading, Button, Stack, ButtonGroup } from "@chakra-ui/react";
 import { Play, Plus } from "lucide-react";
-
-interface HeroProps {
-  title: string;
-  isOriginal: boolean;
-  link: string;
-}
 
 export const Hero = (props: HeroProps) => {
   const { title, isOriginal, link } = props;
-  const ButtonStyle = {
-    maxWidth: 246,
-    padding: "28px 56px",
-    letterSpacing: 4,
-  };
+
   return (
     <Stack spacing={5} w={"full"} paddingBottom={[20, 50]}>
       <Stack>
@@ -38,19 +29,11 @@ export const Hero = (props: HeroProps) => {
         </Heading>
       </Stack>
 
-      <Stack
-        direction={["column", "column", "row"]}
-        justifyContent={["center", "left"]}
-        alignItems={["center", "left"]}>
-        <Button
-          leftIcon={<Play />}
-          as={"a"}
-          href={link}
-          style={ButtonStyle}
-          variant={"primary"}>
+      <Stack flexDirection={["column", "row"]} alignItems={"center"}>
+        <Button leftIcon={<Play />} as={"a"} href={link} variant={"primary"}>
           Reproducir
         </Button>
-        <Button leftIcon={<Plus />} variant={"secondary"} style={ButtonStyle}>
+        <Button leftIcon={<Plus />} variant={"secondary"}>
           Mi lista
         </Button>
       </Stack>

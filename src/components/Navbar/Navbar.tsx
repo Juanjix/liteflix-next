@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Logo } from "./Logo";
+import { useState, useRef, ChangeEvent, useEffect } from "react";
+import { useFormState } from "react-dom";
 
+import { AddIcon } from "@chakra-ui/icons";
 import {
   Button,
   Avatar,
@@ -26,22 +27,76 @@ import {
   Text,
   Show,
   Hide,
+  Center,
+  Icon,
+  Progress,
 } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
-import { IconBell, IconMenu } from "@/components";
+
+import { IconBell, IconMenu, Logo } from "@/components";
 import { createMovie } from "@/app/actions";
+import { Paperclip } from "lucide-react";
 
 const ModalButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isSuccess, setIsSuccess] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [createMovieState, createMovieAction] = useFormState(createMovie, {
+    error: null,
+    success: false,
+  });
+
+  useEffect(() => {
+    if (createMovieState.success) {
+      setIsSuccess(true);
+    }
+  }, [createMovieState]);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      simulateProgress();
+    }
+    setSelectedFile(file || null);
+  };
+
+  const simulateProgress = () => {
+    const id = setInterval(() => {
+      if (progress < 100) {
+        setProgress((prevProgress) => Math.min(prevProgress + 20, 100));
+      } else {
+        clearInterval(id); // Clear the interval when progress reaches 100
+      }
+    }, 1000);
+    setIntervalId(id);
+  };
+
+  const handleInputClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleCancelButton = () => {
+    setSelectedFile(null);
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+    setProgress(0);
+  };
+
+  const handleModalClose = () => {
+    onClose();
+    setIsSuccess(false);
+  };
 
   const inputStyles = {
     padding: "40px",
     border: "1px dashed white",
     color: "white",
-    _placeholder: {
-      textAlign: "center",
-    },
+    width: "100%",
   };
 
   return (
@@ -54,9 +109,13 @@ const ModalButton = () => {
         Agregar peliculas
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} size={"3xl"}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"3xl"} isCentered>
         <ModalOverlay />
-        <ModalContent bg={"darkgrey"} padding={"40px 40px"} color={"white"}>
+        <ModalContent
+          bg={"darkgrey"}
+          padding={"40px 40px"}
+          color={"white"}
+          borderRadius={0}>
           <ModalHeader
             textTransform={"uppercase"}
             color={"brand"}
@@ -68,16 +127,69 @@ const ModalButton = () => {
           <ModalCloseButton />
           <ModalBody>
             {!isSuccess ? (
-              <form action={createMovie}>
+              <form action={createMovieAction}>
                 <Stack alignItems={"center"}>
+                  {!selectedFile && (
+                    <Center
+                      style={inputStyles}
+                      onClick={handleInputClick}
+                      cursor={"pointer"}>
+                      <HStack>
+                        <Icon as={Paperclip}></Icon>
+                        <Text>
+                          Agregá un archivo o arrastralo y soltalo aquí
+                        </Text>
+                      </HStack>
+                    </Center>
+                  )}
+                  {selectedFile && (
+                    <Stack w={"full"}>
+                      <Text>
+                        {progress === 100 ? (
+                          <>
+                            <Text as={"b"}>{progress}% Cargado</Text>
+                          </>
+                        ) : (
+                          <>
+                            Cargando <Text as={"b"}>{progress}%</Text>
+                          </>
+                        )}
+                      </Text>
+                      <Progress
+                        colorScheme="green"
+                        size="md"
+                        value={progress}
+                      />
+
+                      {progress === 100 ? (
+                        <>
+                          <Text as={"b"} color={"brand"} ml={"auto"}>
+                            ¡LISTO!
+                          </Text>
+                        </>
+                      ) : (
+                        <Button
+                          onClick={handleCancelButton}
+                          ml={"auto"}
+                          variant={"link"}>
+                          Cancelar
+                        </Button>
+                      )}
+                    </Stack>
+                  )}
                   <Input
                     type="file"
                     border={0}
                     marginBottom={50}
                     marginTop={50}
                     textAlign={"center"}
-                    style={inputStyles}
                     name="image"
+                    isRequired
+                    accept={".jpg,.jpeg,.png"}
+                    hidden
+                    ref={fileInputRef}
+                    draggable={true}
+                    onChange={(e) => handleFileChange(e)}
                   />
                   <Input
                     placeholder="TITULO"
@@ -97,19 +209,31 @@ const ModalButton = () => {
                     maxW={"248"}
                     color={"white"}
                     letterSpacing={"4px"}
+                    isRequired
                   />
                   <div>
-                    <Button type="submit" variant={"sendData"}>
+                    <Button
+                      type="submit"
+                      variant={"sendData"}
+                      isDisabled={progress < 100 ? true : false}>
                       Subir Pelicula
                     </Button>
                   </div>
                 </Stack>
               </form>
             ) : (
-              <Stack>
-                <Text>Felicitaciones</Text>
+              <Stack textAlign={"center"} spacing={9}>
+                <Text fontSize={"24px"}>¡Felicitaciones!</Text>
                 <Text>Litebox the movie fue correctamente subida</Text>
-                <Button onClick={onClose}>Ir a Home</Button>
+                <div>
+                  <Button
+                    onClick={handleModalClose}
+                    w={"246px"}
+                    borderRadius={0}
+                    color={"darkgrey"}>
+                    Ir a Home
+                  </Button>
+                </div>
               </Stack>
             )}
           </ModalBody>

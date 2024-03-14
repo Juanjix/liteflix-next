@@ -3,8 +3,22 @@
 import { MoviesTable } from "@/db/schema";
 import { db } from "@/db";
 import { revalidatePath } from "next/cache";
+import { desc } from "drizzle-orm";
 
-export async function createMovie(formData: FormData) {
+export async function getFavorites() {
+  try {
+    const data = await db
+      .select()
+      .from(MoviesTable)
+      .orderBy(desc(MoviesTable.createdAt))
+      .limit(4);
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function createMovie(prevState: any, formData: FormData) {
   try {
     const file = formData.get("image") as File;
 
@@ -25,4 +39,5 @@ export async function createMovie(formData: FormData) {
   }
 
   revalidatePath("/");
+  return { error: null, success: true };
 }

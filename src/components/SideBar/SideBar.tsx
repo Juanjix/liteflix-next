@@ -13,24 +13,7 @@ import {
 import { useState } from "react";
 import { MovieCard } from "@/components";
 import { ChevronDown } from "lucide-react";
-
-interface MovieProps {
-  title: string;
-  poster_path: string;
-  release_date: string;
-}
-
-interface FavoritesProps {
-  title: string;
-  image: string;
-}
-
-type Categories = "Populares" | "Favoritas";
-
-interface SideBarProps {
-  populares: any;
-  favorites: any;
-}
+import { Categories, FavoritesProps, MovieProps, SideBarProps } from "@/types";
 
 export const SideBar = (props: SideBarProps) => {
   const [showMovie, setShowMovie] = useState<Categories>("Populares");
@@ -38,7 +21,7 @@ export const SideBar = (props: SideBarProps) => {
   const { populares, favorites } = props;
 
   return (
-    <Stack maxW={"300px"} spacing={4}>
+    <Stack maxW={"327px"} spacing={4}>
       <Box>
         <Menu>
           <MenuButton

@@ -17,8 +17,9 @@ export const MovieCard = (props: MovieCardProps) => {
         backgroundImage={imageUrl}
         backgroundRepeat={"no-repeat"}
         backgroundSize={"cover"}
-        width={220}
-        height={146}>
+        backgroundPosition={"top center"}
+        width={["327px", "300px", "240px"]}
+        height={["172px", "172px", "146px"]}>
         <Stack
           justifyContent={"space-evenly"}
           alignItems={"center"}
