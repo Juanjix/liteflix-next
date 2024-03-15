@@ -92,7 +92,15 @@ export const SideBar = (props: SideBarProps) => {
           )}
       {showMovie === "Favoritas" &&
         favorites.map(({ title, image }: FavoritesProps) => {
-          return <MovieCard title={title} imageUrl={image} key={title} />;
+          return (
+            <MovieCard
+              title={title}
+              imageUrl={image}
+              ranking={5.4}
+              year="2024"
+              key={title}
+            />
+          );
         })}
     </Stack>
   );
