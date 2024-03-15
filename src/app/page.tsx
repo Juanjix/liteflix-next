@@ -8,6 +8,8 @@ export default async function Home() {
   const nowPlaying = await getNowPlaying();
   const favorites = await getFavorites();
 
+  console.log("aca viene la data ---> ", movies);
+
   return (
     <Box
       w={"full"}

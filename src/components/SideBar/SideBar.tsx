@@ -50,11 +50,9 @@ export const SideBar = (props: SideBarProps) => {
               backgroundColor={"darkgrey"}
               justifyContent={"space-between"}
               fontWeight={showMovie === "Populares" ? "bold" : "normal"}>
-              Populares{" "}
-              {showMovie === "Populares" ? (
+              Populares
+              {showMovie === "Populares" && (
                 <Check width={"22px"} height={"18px"} />
-              ) : (
-                <></>
               )}
             </MenuItem>
             <MenuItem
@@ -64,10 +62,8 @@ export const SideBar = (props: SideBarProps) => {
               justifyContent={"space-between"}
               fontWeight={showMovie === "Favoritas" ? "bold" : "normal"}>
               Favoritas
-              {showMovie === "Favoritas" ? (
+              {showMovie === "Favoritas" && (
                 <Check width={"22px"} height={"18px"} />
-              ) : (
-                <></>
               )}
             </MenuItem>
           </MenuList>
@@ -76,17 +72,24 @@ export const SideBar = (props: SideBarProps) => {
       {showMovie === "Populares" &&
         populares.results
           .slice(0, 4)
-          .map(({ title, poster_path, release_date }: MovieProps) => {
-            return (
-              <MovieCard
-                year={release_date}
-                title={title}
-                ranking={2}
-                imageUrl={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                key={title}
-              />
-            );
-          })}
+          .map(
+            ({
+              title,
+              poster_path,
+              release_date,
+              vote_average,
+            }: MovieProps) => {
+              return (
+                <MovieCard
+                  year={release_date.substring(0, 4)}
+                  title={title}
+                  ranking={vote_average}
+                  imageUrl={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                  key={title}
+                />
+              );
+            }
+          )}
       {showMovie === "Favoritas" &&
         favorites.map(({ title, image }: FavoritesProps) => {
           return <MovieCard title={title} imageUrl={image} key={title} />;

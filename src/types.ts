@@ -2,11 +2,14 @@ export interface MovieProps {
   title: string;
   poster_path: string;
   release_date: string;
+  vote_average: number;
 }
 
 export interface FavoritesProps {
   title: string;
   image: string;
+  release_date: string;
+  vote_average: number;
 }
 
 export type Categories = "Populares" | "Favoritas";
