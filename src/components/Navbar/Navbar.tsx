@@ -68,7 +68,7 @@ const ModalButton = () => {
       if (progress < 100) {
         setProgress((prevProgress) => Math.min(prevProgress + 20, 100));
       } else {
-        clearInterval(id); // Clear the interval when progress reaches 100
+        clearInterval(id);
       }
     }, 1000);
     setIntervalId(id);
@@ -155,15 +155,16 @@ const ModalButton = () => {
                           </>
                         )}
                       </Text>
-                      <Progress
-                        colorScheme="green"
-                        size="md"
-                        value={progress}
-                      />
+                      <Progress size="md" value={progress} />
 
                       {progress === 100 ? (
                         <>
-                          <Text as={"b"} color={"brand"} ml={"auto"}>
+                          <Text
+                            as={"b"}
+                            color={"brand"}
+                            ml={"auto"}
+                            fontSize={"16px"}
+                            letterSpacing={"4px"}>
                             ¡LISTO!
                           </Text>
                         </>

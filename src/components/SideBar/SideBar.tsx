@@ -12,7 +12,7 @@ import {
 
 import { useState } from "react";
 import { MovieCard } from "@/components";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import { Categories, FavoritesProps, MovieProps, SideBarProps } from "@/types";
 
 export const SideBar = (props: SideBarProps) => {
@@ -30,7 +30,7 @@ export const SideBar = (props: SideBarProps) => {
             fontWeight={400}
             margin={"0 auto"}
             display={"flex"}>
-            Ver:{" "}
+            Ver:
             <Text
               display={"inline-flex"}
               alignItems={"center"}
@@ -38,12 +38,27 @@ export const SideBar = (props: SideBarProps) => {
               {showMovie} <ChevronDown />
             </Text>
           </MenuButton>
-          <MenuList>
-            <MenuItem onClick={() => setShowMovie("Populares")}>
-              Populares
+          <MenuList
+            backgroundColor={"darkgrey"}
+            color={"white"}
+            borderColor={"darkgrey"}
+            py={"20px"}
+            px={"20px"}
+            mt={"18px"}>
+            <MenuItem
+              onClick={() => setShowMovie("Populares")}
+              backgroundColor={"darkgrey"}
+              display={"flex"}
+              justifyContent={"space-between"}>
+              Populares {showMovie === "Populares" ? <Check /> : <></>}
             </MenuItem>
-            <MenuItem onClick={() => setShowMovie("Favoritas")}>
-              Mis Peliculas
+            <MenuItem
+              onClick={() => setShowMovie("Favoritas")}
+              backgroundColor={"darkgrey"}
+              color={"white"}
+              display={"flex"}
+              justifyContent={"space-between"}>
+              Mis Peliculas {showMovie === "Favoritas" ? <Check /> : <></>}
             </MenuItem>
           </MenuList>
         </Menu>

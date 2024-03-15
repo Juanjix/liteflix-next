@@ -76,5 +76,19 @@ export const theme = extendTheme({
         },
       },
     },
+    Progress: {
+      baseStyle: {
+        filledTrack: {
+          bg: "brand",
+        },
+      },
+    },
+    Menu: {
+      variant: {
+        example: {
+          background: "red",
+        },
+      },
+    },
   },
 });
