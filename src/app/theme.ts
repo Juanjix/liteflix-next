@@ -26,8 +26,6 @@ export const theme = extendTheme({
         color: "white",
         letterSpacing: "4px",
         fontSize: "18px",
-        // maxWidth: "248px",
-        // width: "100%",
       },
       variants: {
         primary: {
@@ -76,17 +74,11 @@ export const theme = extendTheme({
         },
       },
     },
+
     Progress: {
       baseStyle: {
         filledTrack: {
           bg: "brand",
-        },
-      },
-    },
-    Menu: {
-      variant: {
-        example: {
-          background: "red",
         },
       },
     },

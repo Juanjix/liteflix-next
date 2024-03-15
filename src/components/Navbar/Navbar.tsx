@@ -90,6 +90,7 @@ const ModalButton = () => {
   const handleModalClose = () => {
     onClose();
     setIsSuccess(false);
+    setSelectedFile(null);
   };
 
   const inputStyles = {

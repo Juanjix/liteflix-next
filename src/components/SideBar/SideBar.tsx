@@ -42,23 +42,33 @@ export const SideBar = (props: SideBarProps) => {
             backgroundColor={"darkgrey"}
             color={"white"}
             borderColor={"darkgrey"}
-            py={"20px"}
-            px={"20px"}
+            py={"10px"}
+            px={"10px"}
             mt={"18px"}>
             <MenuItem
               onClick={() => setShowMovie("Populares")}
               backgroundColor={"darkgrey"}
-              display={"flex"}
-              justifyContent={"space-between"}>
-              Populares {showMovie === "Populares" ? <Check /> : <></>}
+              justifyContent={"space-between"}
+              fontWeight={showMovie === "Populares" ? "bold" : "normal"}>
+              Populares{" "}
+              {showMovie === "Populares" ? (
+                <Check width={"22px"} height={"18px"} />
+              ) : (
+                <></>
+              )}
             </MenuItem>
             <MenuItem
               onClick={() => setShowMovie("Favoritas")}
               backgroundColor={"darkgrey"}
               color={"white"}
-              display={"flex"}
-              justifyContent={"space-between"}>
-              Mis Peliculas {showMovie === "Favoritas" ? <Check /> : <></>}
+              justifyContent={"space-between"}
+              fontWeight={showMovie === "Favoritas" ? "bold" : "normal"}>
+              Favoritas
+              {showMovie === "Favoritas" ? (
+                <Check width={"22px"} height={"18px"} />
+              ) : (
+                <></>
+              )}
             </MenuItem>
           </MenuList>
         </Menu>
