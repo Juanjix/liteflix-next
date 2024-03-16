@@ -2,6 +2,7 @@
 
 import { useState, useRef, ChangeEvent, useEffect } from "react";
 import { useFormState } from "react-dom";
+import { motion } from "framer-motion";
 
 import { AddIcon } from "@chakra-ui/icons";
 import {
@@ -311,6 +312,9 @@ export const Navbar = () => {
           justify={["space-between", "space-evenly"]}
           w={"full"}
           paddingBottom={"50px"}
+          as={motion.div}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
           paddingTop={"25px"}>
           <BurgerMenu />
           <Logo />
@@ -319,7 +323,14 @@ export const Navbar = () => {
       </Show>
 
       <Hide below="md">
-        <HStack w={"full"} paddingBottom={"30px"} paddingTop={"20px"}>
+        <HStack
+          w={"full"}
+          paddingBottom={"30px"}
+          paddingTop={"20px"}
+          as={motion.div}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition="all 0.5s">
           <HStack spacing={12}>
             <Logo />
             <ModalButton />
