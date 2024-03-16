@@ -315,6 +315,7 @@ export const Navbar = () => {
           as={motion.div}
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
+          transition="all 0.5s"
           paddingTop={"25px"}>
           <BurgerMenu />
           <Logo />
@@ -342,7 +343,11 @@ export const Navbar = () => {
               variant="ghost"
               icon={<IconBell />}
             />
-            <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
+            <Avatar
+              name="Dan Abrahmov"
+              src="/images/avatar.png"
+              cursor={"pointer"}
+            />
           </HStack>
         </HStack>
       </Hide>
