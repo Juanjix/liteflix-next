@@ -30,6 +30,7 @@ export const theme = extendTheme({
       variants: {
         primary: {
           borderRadius: "0",
+          width: "246px",
           padding: "28px 56px",
           backgroundColor: "darkgrey",
           border: "1px solid #242424",
@@ -39,6 +40,7 @@ export const theme = extendTheme({
         },
         secondary: {
           padding: "28px 56px",
+          width: "246px",
           backgroundColor: "transparent",
           border: "1px solid white",
           borderRadius: "0",

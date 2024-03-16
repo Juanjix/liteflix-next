@@ -308,7 +308,7 @@ export const Navbar = () => {
     <>
       <Show below="sm">
         <HStack
-          justify={"space-evenly"}
+          justify={["space-between", "space-evenly"]}
           w={"full"}
           paddingBottom={"50px"}
           paddingTop={"25px"}>

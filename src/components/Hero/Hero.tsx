@@ -1,6 +1,7 @@
 import { HeroProps } from "@/types";
 import { Text, Heading, Button, Stack, ButtonGroup } from "@chakra-ui/react";
 import { Play, Plus } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const Hero = (props: HeroProps) => {
   const { title, isOriginal, link } = props;
@@ -33,7 +34,7 @@ export const Hero = (props: HeroProps) => {
         <Button leftIcon={<Play />} as={"a"} href={link} variant={"primary"}>
           Reproducir
         </Button>
-        <Button leftIcon={<Plus />} variant={"secondary"}>
+        <Button leftIcon={<Plus />} as={"a"} variant={"secondary"}>
           Mi lista
         </Button>
       </Stack>

@@ -8,8 +8,6 @@ export default async function Home() {
   const nowPlaying = await getNowPlaying();
   const favorites = await getFavorites();
 
-  console.log("aca viene la data ---> ", movies);
-
   return (
     <Box
       w={"full"}
@@ -24,7 +22,7 @@ export default async function Home() {
         minH={"100vh"}
         px={["16px", "60px"]}
         background={
-          "linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%)"
+          "linear-gradient(175deg, rgba(0, 0, 0, 0) -50%, #000000 140%)"
         }>
         <Navbar />
         <Stack

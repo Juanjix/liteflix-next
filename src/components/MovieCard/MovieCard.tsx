@@ -4,6 +4,7 @@ import { Box, HStack, IconButton, Stack, Text } from "@chakra-ui/react";
 import { Play, PlayCircleIcon } from "lucide-react";
 import { IconStar } from "..";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface MovieCardProps {
   imageUrl: string;
@@ -19,13 +20,16 @@ export const MovieCard = (props: MovieCardProps) => {
   return (
     <>
       <Box
+        as={motion.div}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition="all 0.5s"
         backgroundImage={imageUrl}
         backgroundRepeat={"no-repeat"}
         backgroundSize={"cover"}
         backgroundPosition={"top center"}
         width={["327px", "300px", "240px"]}
         height={["172px", "172px", "146px"]}
-        transition="all 0.5s"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}>
         <Stack
@@ -65,7 +69,8 @@ export const MovieCard = (props: MovieCardProps) => {
                   fontSize={"14px"}
                   letterSpacing={"2px"}
                   display={"flex"}
-                  alignItems={"center"}>
+                  alignItems={"center"}
+                  mr={"20px"}>
                   <IconStar /> {ranking}
                 </Text>
 

@@ -14,7 +14,7 @@ import { useState } from "react";
 import { MovieCard } from "@/components";
 import { ChevronDown, Check } from "lucide-react";
 import { Categories, FavoritesProps, MovieProps, SideBarProps } from "@/types";
-
+import { motion } from "framer-motion";
 export const SideBar = (props: SideBarProps) => {
   const [showMovie, setShowMovie] = useState<Categories>("Populares");
 
@@ -22,7 +22,11 @@ export const SideBar = (props: SideBarProps) => {
 
   return (
     <Stack maxW={"327px"} spacing={4}>
-      <Box>
+      <Box
+        as={motion.div}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition="all 0.5s">
         <Menu>
           <MenuButton
             as={Button}
