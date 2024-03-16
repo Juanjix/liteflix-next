@@ -160,7 +160,17 @@ const ModalButton = () => {
                       <Progress size="md" value={progress} />
 
                       {progress === 100 ? (
-                        <>
+                        <Stack
+                          display={"flex"}
+                          flexDirection={"row"}
+                          alignItems={"center"}
+                          justifyContent={"flex-end"}>
+                          <Button
+                            onClick={handleCancelButton}
+                            ml={"auto"}
+                            variant={"link"}>
+                            Cancelar
+                          </Button>
                           <Text
                             as={"b"}
                             color={"brand"}
@@ -169,7 +179,7 @@ const ModalButton = () => {
                             letterSpacing={"4px"}>
                             ¡LISTO!
                           </Text>
-                        </>
+                        </Stack>
                       ) : (
                         <Button
                           onClick={handleCancelButton}

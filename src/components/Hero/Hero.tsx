@@ -1,5 +1,7 @@
+"use client";
+
 import { HeroProps } from "@/types";
-import { Text, Heading, Button, Stack, ButtonGroup } from "@chakra-ui/react";
+import { Text, Heading, Button, Stack } from "@chakra-ui/react";
 import { Play, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -7,7 +9,14 @@ export const Hero = (props: HeroProps) => {
   const { title, isOriginal, link } = props;
 
   return (
-    <Stack spacing={5} w={"full"} paddingBottom={[20, 50]}>
+    <Stack
+      spacing={5}
+      w={"full"}
+      paddingBottom={[20, 50]}
+      as={motion.div}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition="all 0.5s">
       <Stack>
         {isOriginal && (
           <Text

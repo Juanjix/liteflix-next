@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Box,
   Button,
@@ -15,6 +16,7 @@ import { MovieCard } from "@/components";
 import { ChevronDown, Check } from "lucide-react";
 import { Categories, FavoritesProps, MovieProps, SideBarProps } from "@/types";
 import { motion } from "framer-motion";
+
 export const SideBar = (props: SideBarProps) => {
   const [showMovie, setShowMovie] = useState<Categories>("Populares");
 
