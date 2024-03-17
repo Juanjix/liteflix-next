@@ -28,8 +28,9 @@ export const SideBar = (props: SideBarProps) => {
         as={motion.div}
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition="all 0.5s">
-        <Menu>
+        transition="all 0.5s"
+        key={"sidebar"}>
+        <Menu closeOnSelect={false}>
           <MenuButton
             as={Button}
             variant={"ghost"}
@@ -55,17 +56,18 @@ export const SideBar = (props: SideBarProps) => {
             transition="all 0.5s"
             py={"10px"}
             px={"10px"}
-            mt={"18px"}>
-            <Box
-              background={"darkgrey"}
-              width={"12px"}
-              height={"12px"}
-              position={"absolute"}
-              top={3}
-              transform="rotate(45deg)"
-              right={"8"}
-              rotate={"20"}
-            />
+            mt={"18px"}
+            _before={{
+              background: "darkgrey",
+              width: "12px",
+              height: "12px",
+              position: "absolute",
+              top: 3,
+              transform: "rotate(45deg)",
+              right: 8,
+              rotate: 20,
+              content: "''",
+            }}>
             <MenuItem
               onClick={() => setShowMovie("Populares")}
               backgroundColor={"darkgrey"}

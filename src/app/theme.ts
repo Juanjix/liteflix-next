@@ -8,6 +8,7 @@ export const theme = extendTheme({
         height: "100%",
         minHeight: "100%",
         background: "black",
+        letterSpacing: "4px",
       },
     },
   },
@@ -18,6 +19,9 @@ export const theme = extendTheme({
   colors: {
     brand: "#64EEBC",
     darkgrey: "#242424",
+    green: {
+      500: "#64EEBC",
+    },
   },
   components: {
     Button: {
@@ -78,9 +82,11 @@ export const theme = extendTheme({
     },
 
     Progress: {
-      baseStyle: {
-        colors: {
-          brand: "#64EEBC",
+      variants: {
+        success: {
+          filledTrack: {
+            bg: "#64EEBC",
+          },
         },
       },
     },

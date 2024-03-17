@@ -16,13 +16,13 @@ export const Hero = (props: HeroProps) => {
       as={motion.div}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition="all 0.5s">
+      transition="all 0.5s"
+      key={"hero"}>
       <Stack>
         {isOriginal && (
           <Text
             fontSize={"20px"}
             color={"white"}
-            letterSpacing={"4px"}
             lineHeight={"24px"}
             fontWeight={"light"}
             textAlign={["center", "center", "left"]}>

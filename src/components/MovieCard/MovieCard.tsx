@@ -1,7 +1,8 @@
 "use client";
 
-import { Box, HStack, IconButton, Stack, Text } from "@chakra-ui/react";
+import { Box, HStack, IconButton, Stack, Text, Icon } from "@chakra-ui/react";
 import { Play, PlayCircleIcon } from "lucide-react";
+
 import { IconStar } from "..";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -47,36 +48,48 @@ export const MovieCard = (props: MovieCardProps) => {
           {isHovered ? (
             <>
               <Box>
-                <Text
-                  color={"white"}
-                  textTransform={"uppercase"}
-                  lineHeight={"16px"}
-                  letterSpacing={"4px"}
-                  textAlign={"left"}
-                  display={"flex"}
-                  alignItems={"center"}
-                  fontWeight={400}>
-                  <PlayCircleIcon />
-                  {title}
-                </Text>
+                <HStack>
+                  <Icon
+                    as={PlayCircleIcon}
+                    width={"24px"}
+                    height={"24px"}
+                    color={"white"}
+                    _hover={{
+                      color: "black",
+                      fill: "brand",
+                    }}
+                  />
+                  <Text
+                    color={"white"}
+                    textTransform={"uppercase"}
+                    lineHeight={"16px"}
+                    textAlign={"left"}
+                    display={"flex"}
+                    alignItems={"center"}
+                    fontWeight={400}>
+                    {title}
+                  </Text>
+                </HStack>
               </Box>
               <HStack
                 alignItems={"center"}
                 justifyContent={"space-between"}
                 w={"100%"}
                 mt={"10px"}>
-                <Text
-                  color={"white"}
-                  fontSize={"14px"}
-                  letterSpacing={"2px"}
-                  display={"flex"}
-                  alignItems={"center"}
-                  mr={"20px"}>
-                  <IconStar /> {ranking}
-                </Text>
+                <HStack>
+                  <IconStar />
+                  <Text
+                    color={"white"}
+                    fontSize={"14px"}
+                    letterSpacing={"2px"}
+                    display={"flex"}
+                    alignItems={"center"}
+                    mr={"20px"}>
+                    {ranking}
+                  </Text>
+                </HStack>
 
                 <Text color={"white"} fontSize={"14px"} letterSpacing={"2px"}>
-                  {" "}
                   {year}
                 </Text>
               </HStack>
@@ -100,7 +113,6 @@ export const MovieCard = (props: MovieCardProps) => {
                 color={"white"}
                 textTransform={"uppercase"}
                 lineHeight={"16px"}
-                letterSpacing={"4px"}
                 textAlign={"center"}
                 fontWeight={400}>
                 {title}
