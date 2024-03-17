@@ -13,7 +13,7 @@ import {
 
 import { useState } from "react";
 import { MovieCard } from "@/components";
-import { ChevronDown, Check } from "lucide-react";
+import { ChevronDown, Check, Rotate3D } from "lucide-react";
 import { Categories, FavoritesProps, MovieProps, SideBarProps } from "@/types";
 import { motion } from "framer-motion";
 
@@ -35,7 +35,10 @@ export const SideBar = (props: SideBarProps) => {
             variant={"ghost"}
             fontWeight={400}
             margin={"0 auto"}
-            display={"flex"}>
+            display={"flex"}
+            _active={{
+              background: "transparent",
+            }}>
             Ver:
             <Text
               display={"inline-flex"}

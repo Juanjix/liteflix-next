@@ -23,7 +23,7 @@ export const MovieCard = (props: MovieCardProps) => {
         as={motion.div}
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition="all 0.5s"
+        transition="all 0.7s"
         backgroundImage={imageUrl}
         backgroundRepeat={"no-repeat"}
         backgroundSize={"cover"}
@@ -36,6 +36,7 @@ export const MovieCard = (props: MovieCardProps) => {
           _hover={{
             background: "rgba(36, 36, 36, 0.7)",
           }}
+          transition="all 0.7s"
           justifyContent={isHovered ? "flex-end" : "space-evenly"}
           alignItems={isHovered ? "flex-start" : "center"}
           h={"full"}
@@ -82,7 +83,10 @@ export const MovieCard = (props: MovieCardProps) => {
             </>
           ) : (
             <>
-              <Box mt={"30px"} display={isHovered ? "none" : "block"}>
+              <Box
+                mt={"30px"}
+                display={isHovered ? "none" : "block"}
+                transition="all 1s">
                 <IconButton
                   aria-label="Notifications"
                   icon={<Play />}

@@ -16,11 +16,13 @@ export default async function Home() {
       backgroundPosition={"top center"}
       backgroundRepeat={"no-repeat"}
       backgroundSize={"cover"}
-      position={"absolute"}
-      zIndex={"100"}
-      transform={"scale(0.9, 1)"}
-      transition={"transform ease-in-out 1.2s"}>
+      // position={"absolute"}
+      // zIndex={"100"}
+      // transform={"scale(1, 1)"}
+      // transition={"transform ease-in-out 1.2s"}>
+    >
       <Container
+        position={"relative"}
         maxW={"100vw"}
         py={"20px"}
         minH={"100vh"}
