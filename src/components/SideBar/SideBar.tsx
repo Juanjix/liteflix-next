@@ -47,6 +47,7 @@ export const SideBar = (props: SideBarProps) => {
               {showMovie} <ChevronDown />
             </Text>
           </MenuButton>
+
           <MenuList
             backgroundColor={"darkgrey"}
             color={"white"}
@@ -54,6 +55,16 @@ export const SideBar = (props: SideBarProps) => {
             py={"10px"}
             px={"10px"}
             mt={"18px"}>
+            <Box
+              background={"darkgrey"}
+              width={"12px"}
+              height={"12px"}
+              position={"absolute"}
+              top={3}
+              transform="rotate(45deg)"
+              right={"8"}
+              rotate={"20"}
+            />
             <MenuItem
               onClick={() => setShowMovie("Populares")}
               backgroundColor={"darkgrey"}
