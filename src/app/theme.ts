@@ -80,7 +80,7 @@ export const theme = extendTheme({
     Progress: {
       baseStyle: {
         colors: {
-          green: "#64EEBC",
+          brand: "#64EEBC",
         },
       },
     },

@@ -15,7 +15,11 @@ export default async function Home() {
       backgroundImage={`https://image.tmdb.org/t/p/original/${nowPlaying.poster_path}`}
       backgroundPosition={"top center"}
       backgroundRepeat={"no-repeat"}
-      backgroundSize={"cover"}>
+      backgroundSize={"cover"}
+      position={"absolute"}
+      zIndex={"100"}
+      transform={"scale(0.9, 1)"}
+      transition={"transform ease-in-out 1.2s"}>
       <Container
         maxW={"100vw"}
         py={"20px"}

@@ -85,7 +85,7 @@ const InputUpload = (props: {
               </>
             )}
           </Text>
-          <Progress size="md" value={progress} colorScheme="green" />
+          <Progress size="md" value={progress} colorScheme="brand" />
 
           {progress === 100 ? (
             <HStack alignItems={"center"} justifyContent={"space-between"}>

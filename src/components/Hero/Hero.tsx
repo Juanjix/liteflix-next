@@ -25,14 +25,14 @@ export const Hero = (props: HeroProps) => {
             letterSpacing={"4px"}
             lineHeight={"24px"}
             fontWeight={"light"}
-            textAlign={["center", "left"]}>
+            textAlign={["center", "center", "left"]}>
             Original de <Text as={"b"}>Liteflix</Text>
           </Text>
         )}
         <Heading
           textTransform={"uppercase"}
           color={"brand"}
-          textAlign={["center", "left"]}
+          textAlign={["center", "center", "left"]}
           letterSpacing={9}
           fontSize={{ base: "76px", lg: "120px" }}>
           {title}
