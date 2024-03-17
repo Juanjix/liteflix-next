@@ -20,7 +20,12 @@ export async function getFavorites() {
 
 export async function createMovie(prevState: any, formData: FormData) {
   try {
+    const title = formData.get("title") as string;
     const file = formData.get("image") as File;
+
+    if (!title || !file) {
+      return { error: true, success: false };
+    }
 
     const fileBuffer = await file.arrayBuffer();
 
@@ -31,11 +36,12 @@ export async function createMovie(prevState: any, formData: FormData) {
     const fileUri = "data:" + mimeType + ";" + encoding + "," + base64Data;
 
     await db.insert(MoviesTable).values({
-      title: formData.get("title") as string,
-      image: fileUri as string,
+      title: title,
+      image: fileUri,
     });
   } catch (e) {
     console.error(e);
+    return { error: true, success: false };
   }
 
   revalidatePath("/");

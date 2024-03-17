@@ -79,8 +79,8 @@ export const theme = extendTheme({
 
     Progress: {
       baseStyle: {
-        filledTrack: {
-          bg: "brand",
+        colors: {
+          green: "#64EEBC",
         },
       },
     },
