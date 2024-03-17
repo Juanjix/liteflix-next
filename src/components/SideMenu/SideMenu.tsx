@@ -12,7 +12,7 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
-import { IconMenu, IconBell, ModalButton } from "..";
+import { IconMenu, IconBell, UploadModal } from "@/components";
 
 export const SideMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -61,7 +61,7 @@ export const SideMenu = () => {
               <Button variant={"link"}>Mis peliculas</Button>
               <Button variant={"link"}>Mi lista</Button>
               <div>
-                <ModalButton />
+                <UploadModal />
               </div>
               <Button variant={"link"}>Cerrar sesion</Button>
             </Stack>

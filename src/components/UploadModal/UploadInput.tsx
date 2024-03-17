@@ -7,6 +7,8 @@ import {
   Button,
   Input,
   Text,
+  Show,
+  Hide,
 } from "@chakra-ui/react";
 import { Paperclip } from "lucide-react";
 import { ChangeEvent, useRef } from "react";
@@ -42,7 +44,12 @@ export const UploadInput = (props: {
           cursor={"pointer"}>
           <HStack>
             <Icon as={Paperclip}></Icon>
-            <Text>Agregá un archivo o arrastralo y soltalo aquí</Text>
+            <Show below="sm">
+              <Text whiteSpace={"nowrap"}>Agregá un archivo</Text>
+            </Show>
+            <Hide below="md">
+              <Text>Agregá un archivo o arrastralo y soltalo aquí</Text>
+            </Hide>
           </HStack>
         </Center>
       )}

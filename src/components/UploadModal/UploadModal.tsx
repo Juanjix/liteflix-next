@@ -15,12 +15,19 @@ import {
   ModalBody,
   ModalCloseButton,
   Input,
+  Hide,
+  Heading,
+  Avatar,
+  HStack,
+  Show,
 } from "@chakra-ui/react";
 
 import { createMovie } from "@/app/actions";
 import { SuccessMessage } from "./SuccesMessage";
 import { SubmitButton } from "./SubmitButton";
 import { UploadInput } from "./UploadInput";
+import { motion } from "framer-motion";
+import { SideMenu, Logo } from "..";
 
 export const UploadModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -99,53 +106,80 @@ export const UploadModal = () => {
         <ModalContent
           justifyContent={"center"}
           bg={"darkgrey"}
-          padding={"40px 40px"}
+          padding={["20px", "40px"]}
           color={"white"}
           borderRadius={0}>
-          <ModalHeader
-            textTransform={"uppercase"}
-            color={"brand"}
-            textAlign={"center"}
-            fontSize={"25px"}>
-            Agregar Pelicula
+          <Hide below="md">
+            <ModalCloseButton />
+          </Hide>
+          <ModalHeader>
+            <Show below="sm">
+              <HStack
+                justify={["space-between", "space-evenly"]}
+                w={"full"}
+                paddingBottom={"50px"}
+                as={motion.div}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition="all 0.5s"
+                key={"navbar"}>
+                <SideMenu />
+                <Logo />
+                <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
+              </HStack>
+            </Show>
           </ModalHeader>
-          <ModalCloseButton />
           <ModalBody>
-            {!isSuccess ? (
-              <form action={createMovieAction}>
-                <Stack alignItems={"center"}>
-                  <UploadInput
-                    selectedFile={selectedFile}
-                    progress={progress}
-                    handleCancelButton={handleCancelButton}
-                    onChange={(e) => handleFileChange(e)}
-                    isError={isError}
-                  />
-                  <Input
-                    placeholder="TITULO"
-                    _placeholder={{
-                      color: "white",
-                      fontSize: "16px",
-                    }}
-                    type="text"
-                    name="title"
-                    border={0}
-                    borderBottom={"1px solid white"}
-                    borderRadius={0}
-                    marginBottom={50}
-                    marginTop={50}
-                    textAlign={"center"}
-                    maxW={"248"}
-                    color={"white"}
-                    letterSpacing={"4px"}
-                    // isRequired
-                  />
-                  <SubmitButton progress={progress} />
-                </Stack>
-              </form>
-            ) : (
-              <SuccessMessage handleModalClose={handleModalClose} />
-            )}
+            <Stack spacing={20}>
+              <Heading
+                textTransform={"uppercase"}
+                color={"brand"}
+                textAlign={"center"}
+                fontSize={"25px"}>
+                Agregar Pelicula
+              </Heading>
+
+              {!isSuccess ? (
+                <form action={createMovieAction}>
+                  <Stack alignItems={"center"}>
+                    <UploadInput
+                      selectedFile={selectedFile}
+                      progress={progress}
+                      handleCancelButton={handleCancelButton}
+                      onChange={(e) => handleFileChange(e)}
+                      isError={isError}
+                    />
+                    <Input
+                      placeholder="TITULO"
+                      _placeholder={{
+                        color: "white",
+                        fontSize: "16px",
+                      }}
+                      type="text"
+                      name="title"
+                      border={0}
+                      borderBottom={"1px solid white"}
+                      borderRadius={0}
+                      marginBottom={50}
+                      marginTop={50}
+                      textAlign={"center"}
+                      maxW={"248"}
+                      color={"white"}
+                      letterSpacing={"4px"}
+                      // isRequired
+                    />
+                    <SubmitButton progress={progress} />
+                    <Hide above="md">
+                      <Button onClick={onClose} variant={"secondary"} mt={3}>
+                        Salir
+                      </Button>
+                    </Hide>
+                  </Stack>
+                </form>
+              ) : (
+                <SuccessMessage handleModalClose={handleModalClose} />
+              )}
+            </Stack>
           </ModalBody>
         </ModalContent>
       </Modal>
