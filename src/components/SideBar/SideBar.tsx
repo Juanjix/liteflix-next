@@ -52,6 +52,7 @@ export const SideBar = (props: SideBarProps) => {
             backgroundColor={"darkgrey"}
             color={"white"}
             borderColor={"darkgrey"}
+            transition="all 0.5s"
             py={"10px"}
             px={"10px"}
             mt={"18px"}>
