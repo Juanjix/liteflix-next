@@ -3,10 +3,8 @@
 import { useState, ChangeEvent, useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
-import { AddIcon } from "@chakra-ui/icons";
 import {
   Button,
-  useDisclosure,
   Stack,
   Modal,
   ModalOverlay,
@@ -20,16 +18,24 @@ import {
   Avatar,
   HStack,
   Show,
+  IconButton,
 } from "@chakra-ui/react";
 
 import { createMovie } from "@/app/actions";
 import { SuccessMessage } from "./SuccesMessage";
 import { SubmitButton } from "./SubmitButton";
 import { UploadInput } from "./UploadInput";
-import { SideMenu, Logo } from "..";
+import { Logo, IconMenu } from "@/components";
 
-export const UploadModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export const UploadModal = ({
+  isModalOpen,
+  onModalClose,
+  handleDrawerOpen,
+}: {
+  isModalOpen: boolean;
+  onModalClose: () => void;
+  handleDrawerOpen: () => void;
+}) => {
   const { pending } = useFormStatus();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -81,23 +87,15 @@ export const UploadModal = () => {
   };
 
   const handleModalClose = () => {
-    onClose();
+    onModalClose();
     handleCancelButton();
     setIsSuccess(false);
   };
 
   return (
     <>
-      <Button
-        padding={"0"}
-        variant="ghost"
-        leftIcon={<AddIcon />}
-        onClick={onOpen}>
-        Agregar peliculas
-      </Button>
-
       <Modal
-        isOpen={isOpen}
+        isOpen={isModalOpen}
         onClose={handleModalClose}
         size={["full", "3xl"]}
         isCentered>
@@ -117,7 +115,12 @@ export const UploadModal = () => {
                 justify={["space-between", "space-evenly"]}
                 w={"full"}
                 key={"navbar"}>
-                <SideMenu />
+                <IconButton
+                  aria-label="Menu"
+                  variant="ghost"
+                  icon={<IconMenu />}
+                  onClick={handleDrawerOpen}
+                />
                 <Stack as={"a"} href="/">
                   <Logo />
                 </Stack>
@@ -174,7 +177,10 @@ export const UploadModal = () => {
                     />
                     <SubmitButton progress={progress} />
                     <Hide above="md">
-                      <Button onClick={onClose} variant={"secondary"} mt={3}>
+                      <Button
+                        onClick={handleModalClose}
+                        variant={"secondary"}
+                        mt={3}>
                         Salir
                       </Button>
                     </Hide>

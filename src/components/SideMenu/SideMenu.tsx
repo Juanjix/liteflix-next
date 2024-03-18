@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  useDisclosure,
   IconButton,
   Drawer,
   DrawerOverlay,
@@ -15,24 +14,26 @@ import {
   Button,
   Show,
 } from "@chakra-ui/react";
-import { IconMenu, IconBell, UploadModal, Logo } from "@/components";
+import { IconBell, Logo } from "@/components";
 import Link from "next/link";
+import { AddIcon } from "@chakra-ui/icons";
 
-export const SideMenu = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+export const SideMenu = ({
+  isDrawerOpen,
+  onDrawerClose,
+  handleModalOpen,
+}: {
+  onDrawerOpen: () => void;
+  isDrawerOpen: boolean;
+  onDrawerClose: () => void;
+  handleModalOpen: () => void;
+}) => {
   return (
     <>
-      <IconButton
-        aria-label="Menu"
-        variant="ghost"
-        icon={<IconMenu />}
-        onClick={onOpen}
-      />
       <Drawer
-        isOpen={isOpen}
+        isOpen={isDrawerOpen}
         placement="left"
-        onClose={onClose}
+        onClose={onDrawerClose}
         size={["full", "lg"]}>
         <DrawerOverlay />
         <DrawerContent backgroundColor={"darkgrey"}>
@@ -86,7 +87,13 @@ export const SideMenu = () => {
               <Button variant={"link"}>Mis peliculas</Button>
               <Button variant={"link"}>Mi lista</Button>
               <div>
-                <UploadModal />
+                <Button
+                  padding={"0"}
+                  variant="ghost"
+                  leftIcon={<AddIcon />}
+                  onClick={handleModalOpen}>
+                  Agregar peliculas
+                </Button>
               </div>
               <Button variant={"link"}>Cerrar sesion</Button>
             </Stack>

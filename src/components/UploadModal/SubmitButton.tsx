@@ -8,7 +8,7 @@ export const SubmitButton = (props: { progress: number }) => {
       <Button
         isLoading={pending}
         type="submit"
-        variant={"sendData"}
+        variant={"send"}
         isDisabled={props.progress < 100 && !pending ? true : false}>
         Subir Pelicula
       </Button>

@@ -65,7 +65,7 @@ export const theme = extendTheme({
           justifyContent: "left",
           fontWeight: 100,
         },
-        sendData: {
+        send: {
           width: "246px",
           padding: "28px 56px",
           border: "1px solid",
@@ -73,7 +73,6 @@ export const theme = extendTheme({
           bg: "white",
           letterSpacing: "4px",
           color: "darkgrey",
-          _hover: "none",
         },
       },
     },

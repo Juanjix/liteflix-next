@@ -28,18 +28,14 @@ export const UploadInput = (props: {
     fileInputRef.current?.click();
   };
 
-  const inputStyles = {
-    padding: "40px",
-    border: "1px dashed white",
-    color: "white",
-    width: "100%",
-  };
-
   return (
     <>
       {!selectedFile && (
         <Center
-          style={inputStyles}
+          padding={"40px"}
+          border={"1px dashed white"}
+          color={"white"}
+          width={"full"}
           onClick={handleInputClick}
           cursor={"pointer"}>
           <HStack>
