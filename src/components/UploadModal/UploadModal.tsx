@@ -26,7 +26,6 @@ import { createMovie } from "@/app/actions";
 import { SuccessMessage } from "./SuccesMessage";
 import { SubmitButton } from "./SubmitButton";
 import { UploadInput } from "./UploadInput";
-import { motion } from "framer-motion";
 import { SideMenu, Logo } from "..";
 
 export const UploadModal = () => {
@@ -117,10 +116,6 @@ export const UploadModal = () => {
               <HStack
                 justify={["space-between", "space-evenly"]}
                 w={"full"}
-                as={motion.div}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition="all 0.5s"
                 key={"navbar"}>
                 <SideMenu />
                 <Logo />
