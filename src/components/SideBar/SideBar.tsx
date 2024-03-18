@@ -31,7 +31,7 @@ export const SideBar = (props: SideBarProps) => {
         transition="all 0.5s"
         // backgroundColor={"darkgrey"}
         key={"sidebar"}>
-        <Menu closeOnSelect={false}>
+        <Menu>
           <MenuButton
             as={Button}
             variant={"ghost"}
@@ -41,7 +41,7 @@ export const SideBar = (props: SideBarProps) => {
             _active={{
               background: "transparent",
             }}>
-            Ver:
+            Ver:{" "}
             <Text
               display={"inline-flex"}
               alignItems={"center"}

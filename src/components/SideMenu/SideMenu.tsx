@@ -16,6 +16,7 @@ import {
   Show,
 } from "@chakra-ui/react";
 import { IconMenu, IconBell, UploadModal, Logo } from "@/components";
+import Link from "next/link";
 
 export const SideMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -67,9 +68,9 @@ export const SideMenu = () => {
                   color={"white"}
                   width={"auto"}
                 />
-                <Stack as={"a"} href="/">
+                <Link href="/">
                   <Logo />
-                </Stack>
+                </Link>
 
                 <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
               </HStack>

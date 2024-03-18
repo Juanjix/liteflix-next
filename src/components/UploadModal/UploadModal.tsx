@@ -130,7 +130,11 @@ export const UploadModal = () => {
             alignItems={"center"}
             justifyContent={"center"}
             w={"full"}>
-            <Stack spacing={20} alignItems={"center"} justifyContent={"center"}>
+            <Stack
+              spacing={20}
+              alignItems={"center"}
+              justifyContent={"center"}
+              w={"full"}>
               <Heading
                 textTransform={"uppercase"}
                 color={"brand"}
@@ -141,7 +145,7 @@ export const UploadModal = () => {
               </Heading>
 
               {!isSuccess ? (
-                <form action={createMovieAction}>
+                <form action={createMovieAction} style={{ width: "100%" }}>
                   <Stack alignItems={"center"}>
                     <UploadInput
                       selectedFile={selectedFile}

@@ -15,21 +15,17 @@ export default async function Home() {
       backgroundImage={`https://image.tmdb.org/t/p/original/${nowPlaying.poster_path}`}
       backgroundPosition={"top center"}
       backgroundRepeat={"no-repeat"}
-      backgroundSize={"cover"}
-      // position={"absolute"}
-      // zIndex={"100"}
-      // transform={"scale(1, 1)"}
-      // transition={"transform ease-in-out 1.2s"}>
-    >
+      backgroundSize={"cover"}>
       <Container
         position={"relative"}
         maxW={"100vw"}
         py={"20px"}
         minH={"100vh"}
         px={["16px", "60px"]}
-        background={
-          "linear-gradient(175deg, rgba(0, 0, 0, 0) -50%, #000000 140%)"
-        }>
+        background={[
+          "linear-gradient(175deg, rgba(0,0,0,0) 0%, rgba(36, 36, 36, 1) 50%)",
+          "linear-gradient(175deg, rgba(0, 0, 0, 0) -50%, #000000 140%)",
+        ]}>
         <Navbar />
         <Stack
           flexDir={["column", "column", "row"]}
