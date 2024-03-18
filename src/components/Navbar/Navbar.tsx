@@ -33,7 +33,7 @@ export const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition="all 0.5s"
           key={"navbarDesktop"}>
-          <HStack spacing={12}>
+          <HStack spacing={12} as={"a"} href="/">
             <Logo />
             <UploadModal />
           </HStack>

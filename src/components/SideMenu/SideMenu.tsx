@@ -67,7 +67,10 @@ export const SideMenu = () => {
                   color={"white"}
                   width={"auto"}
                 />
-                <Logo />
+                <Stack as={"a"} href="/">
+                  <Logo />
+                </Stack>
+
                 <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
               </HStack>
             </Show>

@@ -118,7 +118,9 @@ export const UploadModal = () => {
                 w={"full"}
                 key={"navbar"}>
                 <SideMenu />
-                <Logo />
+                <Stack as={"a"} href="/">
+                  <Logo />
+                </Stack>
                 <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
               </HStack>
             </Show>
@@ -126,12 +128,14 @@ export const UploadModal = () => {
           <ModalBody
             display="flex"
             alignItems={"center"}
-            justifyContent={"center"}>
+            justifyContent={"center"}
+            w={"full"}>
             <Stack spacing={20} alignItems={"center"} justifyContent={"center"}>
               <Heading
                 textTransform={"uppercase"}
                 color={"brand"}
                 textAlign={"center"}
+                display={isSuccess ? "none" : "block"}
                 fontSize={"25px"}>
                 Agregar Pelicula
               </Heading>

@@ -54,7 +54,7 @@ export const UploadInput = (props: {
         </Center>
       )}
       {selectedFile && !isError && (
-        <Stack w={"full"}>
+        <Stack width={"full"}>
           <Text>
             {progress === 100 ? (
               <>
