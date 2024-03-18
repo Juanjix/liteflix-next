@@ -3,7 +3,6 @@
 import { Show, HStack, Avatar, Hide, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { SideMenu, IconBell, UploadModal, Logo } from "@/components";
-
 export const Navbar = () => {
   return (
     <>
