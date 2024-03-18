@@ -1,3 +1,5 @@
+"use client";
+
 import {
   useDisclosure,
   IconButton,
@@ -11,8 +13,10 @@ import {
   DrawerBody,
   Stack,
   Button,
+  Show,
 } from "@chakra-ui/react";
-import { IconMenu, IconBell, UploadModal } from "@/components";
+import { IconMenu, IconBell, UploadModal, Logo } from "@/components";
+import { motion } from "framer-motion";
 
 export const SideMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,23 +37,39 @@ export const SideMenu = () => {
         <DrawerOverlay />
         <DrawerContent backgroundColor={"darkgrey"}>
           <DrawerHeader px={["30px", "60px"]} py={["30px", "30px"]}>
-            <HStack justify={"space-between"}>
-              <DrawerCloseButton
-                top={"auto"}
-                right={"auto"}
-                position={"relative"}
-                color={"white"}
-                width={"auto"}
-              />
-              <HStack spacing={9}>
-                <IconButton
-                  aria-label="Notifications"
-                  variant="ghost"
-                  icon={<IconBell />}
+            <Show above="md">
+              <HStack justify={"space-between"}>
+                <DrawerCloseButton
+                  top={"auto"}
+                  right={"auto"}
+                  position={"relative"}
+                  color={"white"}
+                  width={"auto"}
                 />
+                <HStack spacing={9}>
+                  <IconButton
+                    aria-label="Notifications"
+                    variant="ghost"
+                    icon={<IconBell />}
+                  />
+                  <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
+                </HStack>
+              </HStack>
+            </Show>
+            <Show below="sm">
+              <HStack
+                justify={["space-between", "space-evenly"]}
+                w={"full"}
+                as={motion.div}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition="all 0.5s"
+                key={"navbar"}>
+                <SideMenu />
+                <Logo />
                 <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
               </HStack>
-            </HStack>
+            </Show>
           </DrawerHeader>
           <DrawerBody px={["30px", "60px"]}>
             <Stack spacing={8}>

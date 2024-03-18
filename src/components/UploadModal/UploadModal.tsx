@@ -112,12 +112,11 @@ export const UploadModal = () => {
           <Hide below="md">
             <ModalCloseButton />
           </Hide>
-          <ModalHeader>
+          <ModalHeader pt={0}>
             <Show below="sm">
               <HStack
                 justify={["space-between", "space-evenly"]}
                 w={"full"}
-                paddingBottom={"50px"}
                 as={motion.div}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -129,8 +128,11 @@ export const UploadModal = () => {
               </HStack>
             </Show>
           </ModalHeader>
-          <ModalBody>
-            <Stack spacing={20}>
+          <ModalBody
+            display="flex"
+            alignItems={"center"}
+            justifyContent={"center"}>
+            <Stack spacing={20} alignItems={"center"} justifyContent={"center"}>
               <Heading
                 textTransform={"uppercase"}
                 color={"brand"}
