@@ -112,7 +112,7 @@ export const UploadModal = () => {
           <Hide below="md">
             <ModalCloseButton />
           </Hide>
-          <ModalHeader pt={0}>
+          <ModalHeader pr={0} pl={0}>
             <Show below="sm">
               <HStack
                 justify={["space-between", "space-evenly"]}

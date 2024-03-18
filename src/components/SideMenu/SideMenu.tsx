@@ -36,7 +36,7 @@ export const SideMenu = () => {
         size={["full", "lg"]}>
         <DrawerOverlay />
         <DrawerContent backgroundColor={"darkgrey"}>
-          <DrawerHeader px={["30px", "60px"]} py={["20px", "60px"]}>
+          <DrawerHeader px={["30px", "60px"]} py={["36px", "60px"]}>
             <Show above="md">
               <HStack justify={"space-between"}>
                 <DrawerCloseButton
