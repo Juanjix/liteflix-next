@@ -168,7 +168,6 @@ export const UploadModal = () => {
                       maxW={"248"}
                       color={"white"}
                       letterSpacing={"4px"}
-                      // isRequired
                     />
                     <SubmitButton progress={progress} />
                     <Hide above="md">

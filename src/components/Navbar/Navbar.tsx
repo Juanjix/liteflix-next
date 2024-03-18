@@ -24,7 +24,7 @@ export const Navbar = () => {
         </HStack>
       </Show>
 
-      <Hide below="md">
+      <Hide below="sm">
         <HStack
           w={"full"}
           paddingBottom={"30px"}

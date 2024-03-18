@@ -36,7 +36,7 @@ export const SideMenu = () => {
         size={["full", "lg"]}>
         <DrawerOverlay />
         <DrawerContent backgroundColor={"darkgrey"}>
-          <DrawerHeader px={["30px", "60px"]} py={["30px", "30px"]}>
+          <DrawerHeader px={["30px", "60px"]} py={["20px", "60px"]}>
             <Show above="md">
               <HStack justify={"space-between"}>
                 <DrawerCloseButton
@@ -65,13 +65,19 @@ export const SideMenu = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition="all 0.5s"
                 key={"navbar"}>
-                <SideMenu />
+                <DrawerCloseButton
+                  top={"auto"}
+                  right={"auto"}
+                  position={"relative"}
+                  color={"white"}
+                  width={"auto"}
+                />
                 <Logo />
                 <Avatar name="Dan Abrahmov" src="/images/avatar.png" />
               </HStack>
             </Show>
           </DrawerHeader>
-          <DrawerBody px={["30px", "60px"]}>
+          <DrawerBody px={["30px", "60px"]} py={"50"}>
             <Stack spacing={8}>
               <Button variant={"link"}>Inicio</Button>
               <Button variant={"link"}>Series</Button>

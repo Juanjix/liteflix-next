@@ -29,6 +29,7 @@ export const SideBar = (props: SideBarProps) => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition="all 0.5s"
+        // backgroundColor={"darkgrey"}
         key={"sidebar"}>
         <Menu closeOnSelect={false}>
           <MenuButton
