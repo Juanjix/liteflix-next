@@ -75,7 +75,10 @@ export const Navbar = () => {
               padding={"0"}
               variant="ghost"
               leftIcon={<AddIcon />}
-              onClick={handleModalOpen}>
+              onClick={handleModalOpen}
+              _hover={{
+                color: "brand",
+              }}>
               Agregar peliculas
             </Button>
           </HStack>
