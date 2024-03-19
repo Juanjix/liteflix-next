@@ -32,7 +32,7 @@ export const SideMenu = ({
     <>
       <Drawer
         isOpen={isDrawerOpen}
-        placement="left"
+        placement="right"
         onClose={onDrawerClose}
         size={["full", "lg"]}>
         <DrawerOverlay />
