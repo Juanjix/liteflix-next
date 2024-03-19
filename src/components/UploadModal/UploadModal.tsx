@@ -64,10 +64,14 @@ export const UploadModal = ({
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    setSelectedFile(file || null);
+    if (file && file.size > 1 * 1000 * 1024) {
+      setIsError(true);
+      return;
+    }
     if (file) {
       simulateProgress();
     }
-    setSelectedFile(file || null);
   };
 
   const simulateProgress = () => {
