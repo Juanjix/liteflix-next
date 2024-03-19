@@ -13,7 +13,7 @@ import {
 
 import { useState } from "react";
 import { MovieCard } from "@/components";
-import { ChevronDown, Check, Rotate3D } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import { Categories, FavoritesProps, MovieProps, SideBarProps } from "@/types";
 import { motion } from "framer-motion";
 
@@ -84,7 +84,7 @@ export const SideBar = (props: SideBarProps) => {
               color={"white"}
               justifyContent={"space-between"}
               fontWeight={showMovie === "Favoritas" ? "bold" : "normal"}>
-              Favoritas
+              Mis Películas
               {showMovie === "Favoritas" && (
                 <Check width={"22px"} height={"18px"} />
               )}

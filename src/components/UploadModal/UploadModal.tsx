@@ -150,7 +150,7 @@ export const UploadModal = ({
                 textAlign={"center"}
                 display={isSuccess ? "none" : "block"}
                 fontSize={"25px"}>
-                Agregar Pelicula
+                Agregar Película
               </Heading>
 
               {!isSuccess ? (

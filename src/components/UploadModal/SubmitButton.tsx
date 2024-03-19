@@ -14,7 +14,7 @@ export const SubmitButton = (props: { progress: number }) => {
           color: "black",
           backgroundColor: "grey",
         }}>
-        Subir Pelicula
+        Subir Película
       </Button>
     </div>
   );

@@ -79,7 +79,7 @@ export const Navbar = () => {
               _hover={{
                 color: "brand",
               }}>
-              Agregar peliculas
+              Agregar películas
             </Button>
           </HStack>
           <HStack ml={"auto"} spacing={8}>
