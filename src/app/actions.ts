@@ -5,6 +5,7 @@ import { db } from "@/db";
 import { revalidatePath } from "next/cache";
 import { desc } from "drizzle-orm";
 
+// Action to get Favorites Movies
 export async function getFavorites() {
   try {
     const data = await db
@@ -18,6 +19,7 @@ export async function getFavorites() {
   }
 }
 
+// Action to Create Movies
 export async function createMovie(prevState: any, formData: FormData) {
   try {
     const title = formData.get("title") as string;
