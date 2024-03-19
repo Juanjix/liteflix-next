@@ -46,6 +46,11 @@ export const UploadModal = ({
     error: null,
     success: false,
   });
+  const [titulo, setTitulo] = useState<string>("");
+
+  const handleTituloChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitulo(event.target.value);
+  };
 
   useEffect(() => {
     if (createMovieState.success) {
@@ -84,6 +89,7 @@ export const UploadModal = ({
     }
     setProgress(0);
     setIsError(false);
+    setTitulo("");
   };
 
   const handleModalClose = () => {
@@ -163,6 +169,8 @@ export const UploadModal = ({
                         color: "white",
                         fontSize: "16px",
                       }}
+                      onChange={handleTituloChange}
+                      value={titulo}
                       type="text"
                       name="title"
                       border={0}
@@ -187,7 +195,10 @@ export const UploadModal = ({
                   </Stack>
                 </form>
               ) : (
-                <SuccessMessage handleModalClose={handleModalClose} />
+                <SuccessMessage
+                  handleModalClose={handleModalClose}
+                  titulo={titulo}
+                />
               )}
             </Stack>
           </ModalBody>
