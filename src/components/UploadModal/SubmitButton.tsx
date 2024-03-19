@@ -9,7 +9,11 @@ export const SubmitButton = (props: { progress: number }) => {
         isLoading={pending}
         type="submit"
         variant={"send"}
-        isDisabled={props.progress < 100 && !pending ? true : false}>
+        isDisabled={props.progress < 100 && !pending ? true : false}
+        _hover={{
+          color: "black",
+          backgroundColor: "grey",
+        }}>
         Subir Pelicula
       </Button>
     </div>
