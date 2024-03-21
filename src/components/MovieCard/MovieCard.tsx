@@ -26,9 +26,6 @@ export const MovieCard = (props: MovieCardProps) => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition="all 0.7s"
-        // backgroundRepeat={"no-repeat"}
-        // backgroundSize={"cover"}
-        // backgroundPosition={"top center"}
         position="relative"
         width={["327px", "300px", "240px"]}
         height={["172px", "172px", "146px"]}
@@ -38,8 +35,6 @@ export const MovieCard = (props: MovieCardProps) => {
           alt={title}
           src={imageUrl}
           quality={100}
-          // width={327}
-          // height={172}
           sizes="100vw"
           fill
           style={{
