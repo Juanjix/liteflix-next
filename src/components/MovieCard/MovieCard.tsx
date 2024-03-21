@@ -2,6 +2,7 @@
 
 import { Box, HStack, IconButton, Stack, Text, Icon } from "@chakra-ui/react";
 import { Play, PlayCircleIcon } from "lucide-react";
+import Image from "next/image";
 
 import { IconStar } from "..";
 import { useState } from "react";
@@ -25,19 +26,36 @@ export const MovieCard = (props: MovieCardProps) => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition="all 0.7s"
-        backgroundImage={imageUrl}
-        backgroundRepeat={"no-repeat"}
-        backgroundSize={"cover"}
-        backgroundPosition={"top center"}
+        // backgroundRepeat={"no-repeat"}
+        // backgroundSize={"cover"}
+        // backgroundPosition={"top center"}
+        position="relative"
         width={["327px", "300px", "240px"]}
         height={["172px", "172px", "146px"]}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}>
+        <Image
+          alt={title}
+          src={imageUrl}
+          quality={100}
+          // width={327}
+          // height={172}
+          sizes="100vw"
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "top",
+            zIndex: 0,
+          }}
+        />
+
         <Stack
           _hover={{
             background: "rgba(36, 36, 36, 0.7)",
           }}
+          zIndex={1}
           transition="all 0.7s"
+          position={"relative"}
           justifyContent={isHovered ? "flex-end" : "space-evenly"}
           alignItems={isHovered ? "flex-start" : "center"}
           h={"full"}

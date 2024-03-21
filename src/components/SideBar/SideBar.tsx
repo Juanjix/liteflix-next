@@ -57,6 +57,7 @@ export const SideBar = (props: SideBarProps) => {
             py={"10px"}
             px={"10px"}
             mt={"18px"}
+            zIndex={2}
             _before={{
               background: "darkgrey",
               width: "12px",
